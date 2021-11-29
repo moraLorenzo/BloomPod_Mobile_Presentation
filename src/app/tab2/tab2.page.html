@@ -1,0 +1,68 @@
+<div class="center">
+  <ion-card class="ion-activatable ripple-parent">
+    <ion-card-header>
+      <ion-card-subtitle
+        >To determine your flower arrangement</ion-card-subtitle
+      >
+      <ion-card-title>Please choose an option below</ion-card-title>
+    </ion-card-header>
+
+    <ion-ripple-effect></ion-ripple-effect>
+  </ion-card>
+</div>
+
+<ion-content>
+  <div class="outer">
+    <div class="middle">
+      <div class="inner">
+        <ion-grid>
+          <ion-row>
+            <ion-card
+              class="ion-activatable ripple-parent"
+              (click)="gotoQuick()"
+            >
+              <ion-card-header style="margin: auto; text-align: center">
+                <ion-card-subtitle
+                  ><ion-icon size="large" name="flash-outline"></ion-icon
+                ></ion-card-subtitle>
+                <ion-card-title>Quick</ion-card-title>
+              </ion-card-header>
+
+              <ion-card-content>
+                <span
+                  >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat.</span
+                >
+                <span style="margin-left: 13px">sdsd</span>
+              </ion-card-content>
+              <ion-ripple-effect></ion-ripple-effect>
+            </ion-card>
+          </ion-row>
+          <ion-row>
+            <ion-card
+              class="ion-activatable ripple-parent"
+              (click)="gotoCustom()"
+            >
+              <ion-card-header style="margin: auto; text-align: center">
+                <ion-card-subtitle
+                  ><ion-icon size="large" name="brush-outline"></ion-icon
+                ></ion-card-subtitle>
+                <ion-card-title>Custom</ion-card-title>
+              </ion-card-header>
+
+              <ion-card-content>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat.
+              </ion-card-content>
+              <ion-ripple-effect></ion-ripple-effect>
+            </ion-card>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+  </div>
+</ion-content>

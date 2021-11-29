@@ -1,0 +1,57 @@
+<div class="center" style="width: 100%">
+  <ion-card class="ion-activatable ripple-parent">
+    <ion-card-header>
+      <ion-icon name="arrow-back-outline" (click)="back()"></ion-icon>
+
+      <span class="h4"> Please fill</span>
+      <ion-card-title>Floral Details</ion-card-title>
+    </ion-card-header>
+
+    <ion-ripple-effect></ion-ripple-effect>
+  </ion-card>
+</div>
+
+<ion-content>
+  <div class="form-group mx-auto mt-3" style="width: 93%">
+    <label for="selectInput">Determine Flower Quantity</label>
+    <select
+      id="selectInput"
+      class="form-select mt-2"
+      aria-label="Determine Flower Quantity"
+      (change)="onChange($event.target.value)"
+    >
+      <option selected>Flower Quantity</option>
+      <option value="6">Six (6)</option>
+      <option value="9">Nine (9)</option>
+      <option value="12">Twelve (12)</option>
+    </select>
+  </div>
+
+  <div class="form-group mx-auto mt-5" style="width: 95%">
+    <label for="gridInput">Main Floral Component</label>
+    <!-- Default Searchbar -->
+    <ion-searchbar
+      placeholder="Search Flower"
+      (ionChange)="Search($event)"
+      autocorrect="on"
+    ></ion-searchbar>
+
+    <ion-row id="gridInput">
+      <ion-col size="6" *ngFor="let flower of Flowers;let i = index;">
+        <ion-card (click)="generate(flower.flower_name, flower.flower_price)">
+          <div class="card-title text-center mt-2">
+            {{ flower.flower_name | replaceUnderscore | titlecase }}
+          </div>
+
+          <div class="card">
+            <img
+              src="http://192.168.100.128/bloompod_api/flowers/{{flower.flower_name}}.png"
+              class="card-img-top p-3"
+              alt="{{flower.name}}"
+            />
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

@@ -1,0 +1,31 @@
+<div class="center">
+  <ion-card class="ion-activatable ripple-parent" (click)="about()">
+    <div class="right">
+      <ion-icon style="font-size: 30px" name="help-circle"></ion-icon>
+    </div>
+    <ion-card-header>
+      <ion-card-subtitle>{{greet}},</ion-card-subtitle>
+      <ion-card-title>{{username}}</ion-card-title>
+      <small>{{address}}</small>
+    </ion-card-header>
+
+    <ion-ripple-effect></ion-ripple-effect>
+  </ion-card>
+</div>
+
+<ion-content>
+  <ion-card color="primary" class="card1">
+    <ion-card-header>
+      <img
+        src="../../assets/icon/detailsnblooms.png"
+        style="width: 60%; position: absolute; opacity: 0.3; margin-left: 50%"
+      />
+      <ion-card-subtitle>DETAILS AND BLOOMS</ion-card-subtitle>
+      <ion-card-title>System Benefeciary</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Details & Blooms Events and Flowers provides assistance to event needs and
+      cater to flower arrangements and styling requirements for all occasions.
+    </ion-card-content>
+  </ion-card>
+</ion-content>
