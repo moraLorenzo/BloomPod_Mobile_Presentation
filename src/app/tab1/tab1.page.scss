@@ -7,6 +7,7 @@
   // border: 3px solid green;
   // padding: 10px;
   font-family: "Inter";
+  background-color: #fce3ea;
 }
 .outer {
   padding: 3%;
@@ -46,6 +47,8 @@ ion-card {
 
 .card1 {
   border-radius: 25px;
+
+  background: linear-gradient(180deg, #894794 0%, #db8691 100%);
 }
 
 h1 {
@@ -59,4 +62,8 @@ h1 {
 
 .img-container {
   text-align: center;
+}
+
+ion-content {
+  --ion-background-color: #fce3ea;
 }

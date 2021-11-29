@@ -7,6 +7,7 @@
   // border: 3px solid green;
   // padding: 10px;
   font-family: "Inter";
+  background-color: #fce3ea;
 }
 .outer {
   display: table;
@@ -39,4 +40,10 @@ ion-card {
   width: 95%;
   margin-left: auto;
   margin-right: auto;
+}
+
+.card1 {
+  border-radius: 25px;
+
+  background: linear-gradient(180deg, #894794 0%, #db8691 100%);
 }
