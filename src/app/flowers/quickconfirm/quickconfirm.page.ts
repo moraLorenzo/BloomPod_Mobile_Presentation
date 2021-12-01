@@ -16,6 +16,7 @@ export class QuickconfirmPage implements OnInit {
   user_obj: any;
   userId: any;
   bouquet_name: any;
+  bouquet_description: any;
 
   bouquet_obj: any;
   constructor(
@@ -34,6 +35,7 @@ export class QuickconfirmPage implements OnInit {
     this.link = this.link + history.state.data.quick_name + '.png';
     this.bouquet_name = history.state.data.quick_name;
     this.total = history.state.data.quick_price;
+    this.bouquet_description = history.state.data.quick_details;
     this.user_obj = this.userService.getUser();
     this.userId = this.user_obj.user_id;
   }

@@ -1,4 +1,4 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
     <ion-title>Payment</ion-title>
     <ion-router-link
@@ -9,10 +9,13 @@
       >Back</ion-router-link
     >
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content>
-  <h4>You can send the payments on these accounts:</h4>
+  <ion-card-header>
+    <ion-icon name="arrow-back-outline" (click)="back()"></ion-icon>
+  </ion-card-header>
+  <h4>You can send the payments on any of these accounts:</h4>
   <br />
   <h5>Gcash: BloomPod (0912 123 xxxx)</h5>
   <h5>BDO: BloomPod xxxx xxxxx xxxxxxx</h5>

@@ -23,7 +23,7 @@ export class FlowersService implements PipeTransform {
     let random = ['sunflower', 'lily'];
 
     let template = this._sanitizer.bypassSecurityTrustHtml(
-      ' <img src="./../../../../assets/base/bouquet-by-six.png" style="width: 250px; height:250px;" alt="bouquet" /><img src="http://192.168.100.128/bloompod_api/flowers/' +
+      ' <img src="http://192.168.100.128/bloompod_api/base/bouquet-by-six.png" style="width: 250px; height:250px;" alt="bouquet" /><img src="http://192.168.100.128/bloompod_api/flowers/' +
         `${mainflower}` +
         '.png" style="width: 50px;position: absolute;left: 150px;top: 90px;z-index: 2;"/><img src="http://192.168.100.128/bloompod_api/flowers/' +
         `${mainflower}` +
@@ -48,7 +48,7 @@ export class FlowersService implements PipeTransform {
     let random = ['sunflower', 'lily'];
 
     let template = this._sanitizer.bypassSecurityTrustHtml(
-      ' <img src="./../../../../assets/base/bouquet-by-nine.png" style="width: 250px; height:250px;" alt="bouquet" /><img src="http://192.168.100.128/bloompod_api/flowers/' +
+      ' <img src="http://192.168.100.128/bloompod_api/base/bouquet-by-nine.png" style="width: 250px; height:250px;" alt="bouquet" /><img src="http://192.168.100.128/bloompod_api/flowers/' +
         `${mainflower}` +
         '.png" style="width: 50px;position: absolute;left: 150px;top: 110px;z-index: 2;"/><img src="http://192.168.100.128/bloompod_api/flowers/' +
         `${mainflower}` +
@@ -82,7 +82,7 @@ export class FlowersService implements PipeTransform {
     let random = ['sunflower', 'lily'];
 
     let template = this._sanitizer.bypassSecurityTrustHtml(
-      ' <img src="./../../../../assets/base/bouquet-by-twelve.png" style="width: 250px; height:250px;" alt="bouquet" /><img src="http://192.168.100.128/bloompod_api/flowers/' +
+      ' <img src="http://192.168.100.128/bloompod_api/base/bouquet-by-twelve.png" style="width: 250px; height:250px;" alt="bouquet" /><img src="http://192.168.100.128/bloompod_api/flowers/' +
         `${mainflower}` +
         '.png" style="width: 45px;position: absolute;left: 150px;top: 80px;z-index: 2;"/><img src="http://192.168.100.128/bloompod_api/flowers/' +
         `${mainflower}` +

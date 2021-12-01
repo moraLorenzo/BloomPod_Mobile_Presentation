@@ -67,3 +67,9 @@ h1 {
 ion-content {
   --ion-background-color: #fce3ea;
 }
+
+.t1 {
+  background: -webkit-linear-gradient(180deg, #894794 0%, #db8691 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
