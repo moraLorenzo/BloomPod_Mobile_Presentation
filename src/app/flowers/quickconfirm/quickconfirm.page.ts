@@ -9,7 +9,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./quickconfirm.page.scss'],
 })
 export class QuickconfirmPage implements OnInit {
-  link = '../../../assets/quick/';
+  link = 'http://192.168.100.128/bloompod_api/quick/';
 
   total: any;
 
@@ -32,7 +32,7 @@ export class QuickconfirmPage implements OnInit {
 
     this.bouquet_obj = history.state.data;
 
-    this.link = this.link + history.state.data.quick_name + '.png';
+    this.link = this.link + history.state.data.quick_name + '.jpg';
     this.bouquet_name = history.state.data.quick_name;
     this.total = history.state.data.quick_price;
     this.bouquet_description = history.state.data.quick_details;

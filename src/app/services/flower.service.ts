@@ -25,7 +25,7 @@ export class FlowersService implements PipeTransform {
     let template = this._sanitizer.bypassSecurityTrustHtml(
       ' <img src="http://192.168.100.128/bloompod_api/base/bouquet-by-six.png" style="width: 250px; height:250px;" alt="bouquet" /><img src="http://192.168.100.128/bloompod_api/flowers/' +
         `${mainflower}` +
-        '.png" style="width: 50px;position: absolute;left: 150px;top: 90px;z-index: 2;"/><img src="http://192.168.100.128/bloompod_api/flowers/' +
+        '.png" style="width: 50px;position: absolute;left: 150px;top: 90px;z-index: 2;"/><img src="http://192.168.100.128/bloompod_api/flowessrs/' +
         `${mainflower}` +
         '.png" style="width: 50px;position: absolute;left: 100px;top: 70px;z-index: 1;"/><img src="http://192.168.100.128/bloompod_api/flowers/' +
         `${mainflower}` +

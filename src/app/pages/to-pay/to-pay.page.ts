@@ -111,6 +111,17 @@ export class ToPayPage implements OnInit {
     };
     reader.readAsDataURL(file);
   }
+
+  open_confirmation(order: any) {
+    this.router.navigate(['payment-confirmation'], {
+      state: {
+        data: {
+          order,
+        },
+      },
+    });
+  }
+
   gettoPay(id) {
     this.orders = [];
     let user_id = id;

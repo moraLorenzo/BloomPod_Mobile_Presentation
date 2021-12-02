@@ -16,6 +16,69 @@ export class ModePage implements OnInit {
   userId: any;
   user_obj: any;
 
+  municipality: string = 'Olongapo City';
+
+  barangays = [
+    { name: 'Barangay Asinan' },
+    { name: 'Barangay Banicain' },
+    { name: 'Barangay Barretto' },
+    { name: 'Barangay East Bajac-Bajac' },
+    { name: 'Barangay East Tapinac' },
+    { name: 'Barangay Gordon Heights' },
+    { name: 'Barangay Kababae' },
+    { name: 'Barangay Kalaklan' },
+    { name: 'Barangay Kalalake' },
+    { name: 'Barangay Mabayuan' },
+    { name: 'Barangay New Cabalan' },
+    { name: 'Barangay New Ilalim' },
+    { name: 'Barangay Old Cabalan' },
+    { name: 'Barangay Pag-Asa' },
+    { name: 'Barangay Sta. Rita' },
+    { name: 'Barangay West Bajac-Bajac' },
+    { name: 'Barangay West Tapinac' },
+  ];
+
+  subic = [
+    { name: 'Aningway Sacatihan' },
+    { name: 'Asinan Poblacion' },
+    { name: 'Asinan Proper' },
+    { name: 'Baraca-Camachile' },
+    { name: 'Batiawan' },
+    { name: 'Calapacuan' },
+    { name: 'Calapandayan' },
+    { name: 'Cawag' },
+    { name: 'Ilwas' },
+    { name: 'Mangan-Vaca' },
+    { name: 'Matain' },
+    { name: 'Naugsol' },
+    { name: 'Pamatawan' },
+    { name: 'San Isidro' },
+    { name: 'Santo Tomas' },
+    { name: 'Wawandue' },
+  ];
+
+  olongapo = [
+    { name: 'Barangay Asinan' },
+    { name: 'Barangay Banicain' },
+    { name: 'Barangay Barretto' },
+    { name: 'Barangay East Bajac-Bajac' },
+    { name: 'Barangay East Tapinac' },
+    { name: 'Barangay Gordon Heights' },
+    { name: 'Barangay Kababae' },
+    { name: 'Barangay Kalaklan' },
+    { name: 'Barangay Kalalake' },
+    { name: 'Barangay Mabayuan' },
+    { name: 'Barangay New Cabalan' },
+    { name: 'Barangay New Ilalim' },
+    { name: 'Barangay Old Cabalan' },
+    { name: 'Barangay Pag-Asa' },
+    { name: 'Barangay Sta. Rita' },
+    { name: 'Barangay West Bajac-Bajac' },
+    { name: 'Barangay West Tapinac' },
+  ];
+
+  selectedValue = null;
+
   constructor(
     public router: Router,
     private dataService: DataService,
@@ -43,6 +106,21 @@ export class ModePage implements OnInit {
     this.time = deviceValue;
   }
 
+  change(deviceValue: any) {
+    console.log(deviceValue);
+    this.municipality = deviceValue;
+
+    if (deviceValue == 'Subic') {
+      this.barangays = this.subic;
+    } else if (deviceValue == 'Olongapo City') {
+      this.barangays = this.olongapo;
+    }
+  }
+
+  barangayChange(deviceValue: any) {
+    console.log(deviceValue);
+  }
+
   tConvert(time) {
     // Check correct time format and split into components
     time = time
@@ -68,9 +146,12 @@ export class ModePage implements OnInit {
       '-' +
       today.getDate();
 
+    date = this.formatDate(date);
+
     e.preventDefault();
 
-    if (date < e.target[4].value) {
+    if (date < e.target[6].value) {
+      var desiredTime = this.tConvert(e.target[7].value);
       let user_id = this.userId;
       let order_flower = 'Generated Flower Bouquet';
       let main_flower = this.order_obj.primary;
@@ -81,15 +162,18 @@ export class ModePage implements OnInit {
       let order_id = this.order_obj.order_id;
 
       let order_payment = this.mode;
-      let address = e.target[1].value;
-      let order_time = e.target[5].value + 'PM';
-      let order_date = e.target[4].value;
+      let order_time = desiredTime;
+      let order_date = e.target[6].value;
 
       let order_recipient = e.target[0].value;
 
-      let order_address = e.target[1].value;
-      let order_landmark = e.target[2].value;
-      let order_contact = e.target[3].value;
+      let order_address =
+        e.target[2].value + ', ' + e.target[3].value + ', ' + e.target[1].value;
+      let order_landmark = e.target[4].value;
+      let order_contact = e.target[5].value;
+
+      let order_message = e.target[8].value;
+      let order_purpose = e.target[9].value;
       if (quantity == 6 || quantity == 9) {
         tertiary_flower = null;
       }
@@ -110,11 +194,12 @@ export class ModePage implements OnInit {
             order_totalprice,
             order_recipient,
             order_payment,
-            address,
             order_date,
             order_time,
             order_landmark,
             order_address,
+            order_message,
+            order_purpose,
             order_contact,
           },
           2
@@ -132,18 +217,28 @@ export class ModePage implements OnInit {
             console.log('Invalid Inputs');
           }
         );
-    } else if (date == e.target[4].value) {
-      var time = today.toLocaleTimeString('en-US', {
+    } else if (date == e.target[6].value) {
+      // var time = today.toLocaleTimeString('en-US', {
+      //   hour12: false,
+      //   hour: 'numeric',
+      //   minute: 'numeric',
+      // });
+
+      var sample = new Date().getTime() + 2 * 60 * 60 * 1000; // get your number
+      var datez = new Date(sample); // create Date object
+
+      var time = datez.toLocaleTimeString('en-US', {
         hour12: false,
         hour: 'numeric',
         minute: 'numeric',
       });
-      var desiredTime = this.tConvert(e.target[5].value);
+
+      var desiredTime = this.tConvert(e.target[7].value);
 
       console.log(time);
       console.log(desiredTime);
 
-      if (time < e.target[5].value) {
+      if (time < e.target[7].value) {
         console.log(desiredTime);
         console.log(time);
         let user_id = this.userId;
@@ -155,15 +250,23 @@ export class ModePage implements OnInit {
         let order_totalprice = this.order_obj.total;
         let order_id = this.order_obj.order_id;
         let order_payment = this.mode;
-        let address = e.target[1].value;
+
         let order_time = desiredTime;
-        let order_address = e.target[1].value;
-        let order_landmark = e.target[2].value;
-        let order_contact = e.target[3].value;
-        let order_date = e.target[4].value;
+        let order_date = e.target[6].value;
+
         let order_recipient = e.target[0].value;
 
-        console.log(e.target[3].value);
+        let order_address =
+          e.target[2].value +
+          ', ' +
+          e.target[3].value +
+          ', ' +
+          e.target[1].value;
+        let order_landmark = e.target[4].value;
+        let order_contact = e.target[5].value;
+
+        let order_message = e.target[8].value;
+        let order_purpose = e.target[9].value;
         if (quantity == 6 || quantity == 9) {
           tertiary_flower = null;
         }
@@ -184,11 +287,12 @@ export class ModePage implements OnInit {
               order_totalprice,
               order_recipient,
               order_payment,
-              address,
               order_date,
               order_time,
               order_landmark,
               order_address,
+              order_message,
+              order_purpose,
               order_contact,
             },
             2
@@ -223,6 +327,8 @@ export class ModePage implements OnInit {
       '-' +
       today.getDate();
 
+    date = this.formatDate(date);
+
     e.preventDefault();
 
     if (date < e.target[0].value) {
@@ -241,6 +347,9 @@ export class ModePage implements OnInit {
       let order_address = null;
       let order_landmark = null;
       let order_contact = e.target[2].value;
+
+      let order_message = e.target[3].value;
+      let order_purpose = e.target[4].value;
 
       if (quantity == 6 || quantity == 9) {
         tertiary_flower = null;
@@ -266,6 +375,8 @@ export class ModePage implements OnInit {
             order_time,
             order_landmark,
             order_address,
+            order_message,
+            order_purpose,
             order_contact,
           },
           2
@@ -284,7 +395,16 @@ export class ModePage implements OnInit {
           }
         );
     } else if (date == e.target[0].value) {
-      var time = today.toLocaleTimeString('en-US', {
+      // var time = today.toLocaleTimeString('en-US', {
+      //   hour12: false,
+      //   hour: 'numeric',
+      //   minute: 'numeric',
+      // });
+
+      var sample = new Date().getTime() + 2 * 60 * 60 * 1000; // get your number
+      var datez = new Date(sample); // create Date object
+
+      var time = datez.toLocaleTimeString('en-US', {
         hour12: false,
         hour: 'numeric',
         minute: 'numeric',
@@ -309,6 +429,9 @@ export class ModePage implements OnInit {
         let order_address = null;
         let order_landmark = null;
         let order_contact = e.target[2].value;
+
+        let order_message = e.target[3].value;
+        let order_purpose = e.target[4].value;
         console.log(e.target[2].value);
         if (quantity == 6 || quantity == 9) {
           tertiary_flower = null;
@@ -334,6 +457,8 @@ export class ModePage implements OnInit {
               order_time,
               order_landmark,
               order_address,
+              order_message,
+              order_purpose,
               order_contact,
             },
             2
@@ -369,5 +494,17 @@ export class ModePage implements OnInit {
 
   back() {
     this.router.navigate(['custom']);
+  }
+
+  formatDate(date) {
+    var d = new Date(date),
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
   }
 }

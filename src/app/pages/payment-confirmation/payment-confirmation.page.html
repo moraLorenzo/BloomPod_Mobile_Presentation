@@ -43,14 +43,17 @@
             >
 
             <ion-col>
-              <ion-button (click)="cancel()" style="float: right" color="danger"
-                >Cancel
+              <ion-button (click)=" getGallery()" style="float: right"
+                >Upload Image
                 <ion-icon
-                  name="alert-circle-outline"
+                  name="arrow-up-circle-outline"
                   style="padding-left: 15px"
                 ></ion-icon
               ></ion-button>
             </ion-col>
+          </ion-row>
+          <ion-row class="p-3">
+            <img [src]="imgURL" class="mx-auto" />
           </ion-row>
           <!-- <ion-row class="p-3">
             <ion-text>
@@ -63,5 +66,5 @@
   </div>
 </ion-content>
 <ion-footer class="ion-no-border myColor" color="primary">
-  <h6 (click)="mode()" style="padding-left: 15px">Checkout</h6>
+  <h6 (click)="pay()" style="padding-left: 15px">Submit</h6>
 </ion-footer>

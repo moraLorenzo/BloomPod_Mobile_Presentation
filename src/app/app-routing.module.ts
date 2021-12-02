@@ -122,6 +122,14 @@ const routes: Routes = [
       ),
     canActivate: [AuthGuard],
   },
+  {
+    path: 'payment-confirmation',
+    loadChildren: () =>
+      import('./pages/payment-confirmation/payment-confirmation.module').then(
+        (m) => m.PaymentConfirmationPageModule
+      ),
+    canActivate: [AuthGuard],
+  },
 ];
 @NgModule({
   imports: [

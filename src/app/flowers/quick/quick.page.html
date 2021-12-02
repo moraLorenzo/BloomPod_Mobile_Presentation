@@ -35,16 +35,15 @@
       <ion-row>
         <ion-col size="6" *ngFor="let flower of Flowers;let i = index;">
           <ion-card (click)="confirm(flower)" color="primary">
-            <div class="card-title text-center mt-2">
-              {{ flower.quick_name | titlecase }}
-            </div>
-
             <div class="card">
               <img
-                src="../../../assets/quick/{{flower.quick_name}}.png"
+                src="http://192.168.100.128/bloompod_api/quick/{{flower.quick_name}}.jpg"
                 class="card-img-top p-3"
                 alt="{{flower.name}}"
               />
+            </div>
+            <div class="card-title text-center mt-2">
+              {{ flower.quick_name | titlecase }}
             </div>
           </ion-card>
         </ion-col>

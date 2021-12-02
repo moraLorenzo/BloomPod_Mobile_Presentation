@@ -3,13 +3,14 @@ import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { DataService } from 'src/app/services/data/data.service';
 import { FlowersService } from 'src/app/services/flower.service';
-
+import { Order } from '../../models/order';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 @Component({
-  selector: 'app-confirmcart',
-  templateUrl: './confirmcart.page.html',
-  styleUrls: ['./confirmcart.page.scss'],
+  selector: 'app-payment-confirmation',
+  templateUrl: './payment-confirmation.page.html',
+  styleUrls: ['./payment-confirmation.page.scss'],
 })
-export class ConfirmcartPage implements OnInit {
+export class PaymentConfirmationPage implements OnInit {
   flowername: any;
   primary: any;
   secondary: any;
@@ -24,14 +25,21 @@ export class ConfirmcartPage implements OnInit {
 
   link: any;
   order_flower: any;
+  res: any;
+
+  orderPayload: Order;
+  imgURL = '../../../assets/icon/addImage.png';
 
   show = false;
   constructor(
     private fs: FlowersService,
     public router: Router,
     public dataService: DataService,
-    public toastController: ToastController
-  ) {}
+    public toastController: ToastController,
+    private camera: Camera
+  ) {
+    this.orderPayload = new Order();
+  }
 
   ngOnInit() {
     // this.order = history.state.data;
@@ -39,7 +47,6 @@ export class ConfirmcartPage implements OnInit {
   }
   ionViewWillEnter() {
     this.show = false;
-    this.index = history.state.data.i;
     this.orders = history.state.data.order;
     this.order_flower = history.state.data.order.order_flower;
     if (
@@ -75,38 +82,37 @@ export class ConfirmcartPage implements OnInit {
     }
   }
 
-  mode() {
-    let order = this.orders;
-    // let primary = order.main_flower
-    this.router.navigate(['mode'], {
-      state: {
-        data: {
-          quantity: order.quantity,
-          primary: order.main_flower,
-          secondary: order.secondary_flower,
-          tertiary: order.tertiary_flower,
-          total: order.order_totalprice,
-          order_id: order.order_id,
-        },
-      },
-    });
-  }
-
-  cancel() {
-    let order_id = this.order_id;
-    let i = history.state.data.i;
-    this.dataService
-      .processData(btoa('cancel').replace('=', ''), { order_id }, 2)
-      .subscribe((dt: any) => {
-        let load = this.dataService.decrypt(dt.a);
-        console.log(load);
-        this.presentToast(load.msg);
-        this.router.navigate(['tabs/tab1']);
-      });
-  }
-
   back() {
-    this.router.navigate(['tabs/tab4']);
+    this.router.navigate(['toPay']);
+  }
+
+  pay() {
+    if (this.imgURL == '../../../assets/icon/addImage.png') {
+      this.presentToast('Pleas Upload an Image First');
+    } else {
+      this.orderPayload.order_id = this.orders.order_id;
+      this.update();
+    }
+  }
+
+  getGallery() {
+    // this.orderPayload.order_id = id;
+    this.camera
+      .getPicture({
+        quality: 100,
+        sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+        destinationType: this.camera.DestinationType.DATA_URL,
+        encodingType: this.camera.EncodingType.JPEG,
+        mediaType: this.camera.MediaType.PICTURE,
+      })
+      .then(async (res) => {
+        let result = 'data:image/jpeg;base64,' + res;
+        this.imgURL = result;
+        console.log(result);
+      })
+      .catch((e) => {
+        console.log();
+      });
   }
 
   async presentToast(msg) {
@@ -115,5 +121,18 @@ export class ConfirmcartPage implements OnInit {
       duration: 2000,
     });
     toast.present();
+  }
+
+  async update() {
+    console.log(this.orderPayload);
+    this.orderPayload.payment = this.imgURL;
+
+    this.res = await this.dataService.updateImage(this.orderPayload);
+    if (this.res.message == 'UPLOAD SUCCEED') {
+      console.log(this.res.message);
+      this.router.navigate(['tabs/tab4']);
+    } else {
+      console.log(this.res.message);
+    }
   }
 }

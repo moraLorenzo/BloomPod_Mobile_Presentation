@@ -11,9 +11,9 @@ import { DataService } from 'src/app/services/data/data.service';
 @Pipe({ name: 'replaceUnderscore' })
 export class CustomPage implements OnInit {
   Flowers = [
-    { flower_name: 'rose' },
-    { flower_name: 'sunflower' },
-    { flower_name: 'lily' },
+    // { flower_name: 'rose' },
+    // { flower_name: 'sunflower' },
+    // { flower_name: 'lily' },
   ];
 
   quantity: number = 0;

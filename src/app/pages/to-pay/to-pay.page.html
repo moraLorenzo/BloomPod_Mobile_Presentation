@@ -1,25 +1,20 @@
-<!-- <ion-header>
-  <ion-toolbar>
-    <ion-title>Payment</ion-title>
-    <ion-router-link
-      (click)="back()"
-      slot="end"
-      class="underline"
-      style="margin: 10px"
-      >Back</ion-router-link
-    >
-  </ion-toolbar>
-</ion-header> -->
-
 <ion-content>
   <ion-card-header>
     <ion-icon name="arrow-back-outline" (click)="back()"></ion-icon>
   </ion-card-header>
-  <h4>You can send the payments on any of these accounts:</h4>
-  <br />
-  <h5>Gcash: BloomPod (0912 123 xxxx)</h5>
-  <h5>BDO: BloomPod xxxx xxxxx xxxxxxx</h5>
 
+  <ion-card class="ion-activatable ripple-parent">
+    <ion-card-header>
+      <ion-card-subtitle
+        >You can send the payments on any of these Accounts:</ion-card-subtitle
+      >
+    </ion-card-header>
+
+    <ion-card-content>
+      <h5>Gcash: BloomPod (0912 123 xxxx)</h5>
+      <h5>BDO: BloomPod xxxx xxxxx xxxxxxx</h5>
+    </ion-card-content>
+  </ion-card>
   <div *ngIf="show">
     <ion-card class="ion-activatable ripple-parent">
       <ion-card-header>
@@ -37,7 +32,10 @@
   <div *ngIf="!show">
     <div *ngFor="let order of orders; index as i">
       <ion-list *ngIf="order.order_status == 'toPay'">
-        <ion-card class="ion-activatable ripple-parent">
+        <ion-card
+          class="ion-activatable ripple-parent"
+          (click)="open_confirmation(order)"
+        >
           <ion-item lines="none">
             <ion-icon
               name="flower-outline"
@@ -50,9 +48,9 @@
               <ion-card-title
                 >₱ {{order.order_totalprice | number:'1.2-2'}}</ion-card-title
               >
-              <ion-button (click)="getGallery(order.order_id)"
+              <!-- <ion-button (click)="getGallery(order.order_id)"
                 >Payment</ion-button
-              >
+              > -->
               <ion-button color="danger" (click)="cancel(i,order)"
                 >Cancel Order</ion-button
               >
