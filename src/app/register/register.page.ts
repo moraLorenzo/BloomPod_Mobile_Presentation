@@ -194,4 +194,7 @@ export class RegisterPage implements OnInit {
       });
     }
   }
+  back() {
+    this._route.navigate(['login']);
+  }
 }
