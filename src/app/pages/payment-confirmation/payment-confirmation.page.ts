@@ -88,7 +88,7 @@ export class PaymentConfirmationPage implements OnInit {
 
   pay() {
     if (this.imgURL == '../../../assets/icon/addImage.png') {
-      this.presentToast('Pleas Upload an Image First');
+      this.presentToast('Please Upload an Image First');
     } else {
       this.orderPayload.order_id = this.orders.order_id;
       this.update();

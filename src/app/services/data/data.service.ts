@@ -115,7 +115,8 @@ export class DataService {
     const formData = new FormData();
     formData.append('order_id', update.order_id);
 
-    const URL = 'http://192.168.100.128/bloompod_api/dXBkYXRlX29yZGVy';
+    const URL =
+      'http://bloompod.api.gc-ecommerceapp.com/bloompod_api/dXBkYXRlX29yZGVy';
 
     if (update.payment) {
       const posterFile = await fetch(update.payment);

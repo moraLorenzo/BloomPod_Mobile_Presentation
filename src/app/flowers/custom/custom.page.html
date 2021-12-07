@@ -20,7 +20,7 @@
       aria-label="Determine Flower Quantity"
       (change)="onChange($event.target.value)"
     >
-      <option selected>Flower Quantity</option>
+      <option value="" selected>Flower Quantity</option>
       <option value="6">Six (6)</option>
       <option value="9">Nine (9)</option>
       <option value="12">Twelve (12)</option>
@@ -44,7 +44,7 @@
         >
           <div class="card">
             <img
-              src="http://192.168.100.128/bloompod_api/flowers/{{flower.flower_name}}.png"
+              src="http://bloompod.api.gc-ecommerceapp.com/bloompod_api/flowers/{{flower.flower_name}}.png"
               class="card-img-top p-3"
               alt="{{flower.name}}"
             />
