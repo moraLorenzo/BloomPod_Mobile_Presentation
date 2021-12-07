@@ -291,12 +291,28 @@ export class GeneratePage implements OnInit {
     this.router.navigate(['custom']);
   }
 
+  sortByFrequency(array) {
+    var frequency = {};
+
+    array.forEach(function (value) {
+      frequency[value] = 0;
+    });
+
+    var uniques = array.filter(function (value) {
+      return ++frequency[value] == 1;
+    });
+
+    return uniques.sort(function (a, b) {
+      return frequency[b] - frequency[a];
+    });
+  }
+
   getOrders(id) {
     this.orders = [];
     let user_id = id;
 
     this.dataService
-      .processData(btoa('getOrders').replace('=', ''), { user_id }, 2)
+      .processData(btoa('getMyOrders').replace('=', ''), { user_id }, 2)
       .subscribe((dt: any) => {
         let load = this.dataService.decrypt(dt.a);
         console.log(load);
@@ -311,9 +327,12 @@ export class GeneratePage implements OnInit {
             }
           }
 
-          console.log(this.Flowers);
+          // console.log(this.Flowers);
+          // console.log(this.orders);
+          // console.log(this.sortByFrequency(this.orders));
           let chars = this.orders;
-          let uniqueChars = [...new Set(chars)];
+          // let uniqueChars = [...new Set(chars)];
+          let uniqueChars = this.sortByFrequency(this.orders).reverse();
 
           console.log(uniqueChars);
 

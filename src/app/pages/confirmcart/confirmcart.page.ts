@@ -50,7 +50,7 @@ export class ConfirmcartPage implements OnInit {
     } else {
       this.show = true;
       this.link =
-        'http://192.168.100.128/bloompod_api/quick/' +
+        'http://bloompod.api.gc-ecommerceapp.com/bloompod_api/quick/' +
         this.orders.order_flower +
         '.jpg';
     }

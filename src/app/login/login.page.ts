@@ -27,7 +27,8 @@ export class LoginPage implements OnInit {
     private dataService: DataService,
     public toastController: ToastController,
     private userService: UserService,
-    public popoverController: PopoverController
+    public popoverController: PopoverController,
+    public loadingController: LoadingController
   ) {}
 
   ngOnInit() {}
@@ -44,6 +45,23 @@ export class LoginPage implements OnInit {
     this._router.navigate(['register']);
   }
 
+  async presentLoading(token) {
+    const loading = await this.loadingController.create({
+      cssClass: 'my-custom-class-login',
+      message:
+        '<ion-img src="../../assets/icon/Bloom.png" alt="loading..." class="rotate"></ion-img><br/> <p>Logging in...</p>',
+      translucent: true,
+      showBackdrop: false,
+      spinner: null,
+    });
+
+    // console.log('Loading dismissed!');
+
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+  }
+
   async presentToast(msg) {
     const toast = await this.toastController.create({
       message: msg,
@@ -58,61 +76,20 @@ export class LoginPage implements OnInit {
       this.passwordIcon === 'visibility_off' ? 'visibility' : 'visibility_off';
   }
 
-  // async checkAccepted(): Promise<boolean> {
-  //   let param1 = this.email;
-  //   let param2 = this.password;
-
-  //   await this.dataService
-  //     .processData('doctoraccepted', { param1, param2 })
-  //     .then(async (res: any) => {
-  //       if (res.error) {
-  //         this.isAccepted = false;
-  //       } else if (res) {
-  //         this.isAccepted = true;
-  //       } else {
-  //         this.isAccepted = false;
-  //       }
-  //     });
-
-  //   return this.isAccepted;
-  // }
-
-  // public async checklogin(e) {
-  //   let param1 = e.target[0].value;
-  //   let param2 = e.target[1].value;
-
-  //   await this.dataService
-  //     .processData('logindoctor', { param1, param2 })
-  //     .then(async (res: any) => {
-  //       if (res.error) {
-  //         this.presentToast('Invalid Inputs');
-  //       } else {
-  //         let isAccepted = await this.checkAccepted();
-  //         if (isAccepted) {
-  //           window.sessionStorage.setItem('doctor_id', res.data.doctor_id);
-  //           window.sessionStorage.setItem('doctor_name', res.data.doctor_name);
-  //           this.presentToast(
-  //             'Successfully logged in ' +
-  //               window.sessionStorage.getItem('doctor_name')
-  //           );
-  //           this.email = '';
-  //           this.password = '';
-  //           this.passwordIcon = 'visibility_off';
-  //           this.userService.setLoggedIn();
-  //           this.router.navigate(['tabs']);
-  //         } else {
-  //           this.presentToast('Account not yet Accepted');
-  //         }
-  //       }
-  //     })
-  //     .catch(async (err) => {
-  //       await this.presentToast('Invalid inputs');
-  //       // console.log(`login failed ${err}`);
-  //     });
-  // }
-
-  onSubmit(e) {
+  async onSubmit(e) {
     e.preventDefault();
+
+    const loading = await this.loadingController.create({
+      cssClass: 'my-custom-class-login',
+      message:
+        '<ion-img src="../../assets/icon/Bloom1.png" alt="loading..." class="rotate"></ion-img><br/> <p>Logging in...</p>',
+      translucent: true,
+      showBackdrop: false,
+      spinner: null,
+    });
+
+    await loading.present();
+
     let f = e.target.elements;
     let email = e.target[0].value;
     let password = e.target[1].value;
@@ -121,13 +98,11 @@ export class LoginPage implements OnInit {
       .processData(btoa('login').replace('=', ''), { email, password }, 2)
       .subscribe(
         (dt: any) => {
-          // console.log(dt.a);
           let load = this.dataService.decrypt(dt.a);
-          // console.log(load.status);
 
           if (load.status['remarks'] == 'success') {
             this.userService.setUser(load.payload.name[0]);
-            // console.log(load.payload.name[0]);
+            loading.dismiss();
             this._router.navigate(['tabs']);
             e.target.reset();
           } else if (
@@ -147,6 +122,8 @@ export class LoginPage implements OnInit {
           this.presentToast('Invalid Inputs');
         }
       );
+
+    const { role, data } = await loading.onDidDismiss();
   }
 
   public async presentPopover() {
@@ -160,15 +137,12 @@ export class LoginPage implements OnInit {
     const data = await popover.onWillDismiss();
 
     if (data['data']['OTP']) {
-      // console.log(data['data']['OTP']);
       this.OTP = data['data']['OTP'];
 
       this.user_OTP();
     } else {
-      // console.log('hello');
       this.presentToast('Required input');
     }
-    // this.rating();
   }
 
   user_OTP() {
@@ -180,22 +154,17 @@ export class LoginPage implements OnInit {
       )
       .subscribe(
         (dt: any) => {
-          // console.log(dt.a);
           let load = this.dataService.decrypt(dt.a);
           // console.log(load.status);
 
           if (load.status['remarks'] == 'success') {
-            // console.log(load);
             this.userService.setUser(load.payload.name.data[0]);
-            // this.userService.setUserLoggedIn();
+
             this._router.navigate(['tabs']);
           } else if (load.status['remarks'] == 'failed') {
             this.presentToast(load.status['message']);
             this.presentPopover();
           }
-
-          // email = this.userService.getEmail();
-          // this.userService.setUserLoggedIn(load.name, load.key, load.id);
         },
         (er) => {
           this.presentToast('Invalid Inputs OTP');

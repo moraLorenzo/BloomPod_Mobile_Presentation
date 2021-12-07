@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
-import { ToastController } from '@ionic/angular';
+import { LoadingController, ToastController } from '@ionic/angular';
 import { Doctor } from '../models/doctor';
 import { DataService } from '../services/data/data.service';
 
@@ -28,7 +28,8 @@ export class RegisterPage implements OnInit {
     public toastController: ToastController,
     public dataService: DataService,
     private formBuilder: FormBuilder,
-    private _route: Router
+    private _route: Router,
+    public loadingController: LoadingController
   ) {}
 
   ngOnInit() {
@@ -96,7 +97,18 @@ export class RegisterPage implements OnInit {
       });
   }
 
-  onSubmit() {
+  async onSubmit() {
+    const loading = await this.loadingController.create({
+      cssClass: 'my-custom-class-login',
+      message:
+        '<ion-img src="../../assets/icon/Bloom1.png" alt="loading..." class="rotate"></ion-img><br/> <p>Logging in...</p>',
+      translucent: true,
+      showBackdrop: false,
+      spinner: null,
+    });
+
+    await loading.present();
+
     let letters = [
       'A',
       'B',
@@ -152,37 +164,54 @@ export class RegisterPage implements OnInit {
 
     this.dataService
       .processData(btoa('mailer').replace('=', ''), { email: u_e, body }, 2)
-      .subscribe((res: any) => {
-        let payload = this.dataService.decrypt(res.a);
-        console.log(payload);
-        if (payload.data == 'Message has been sent') {
-          this.dataService
-            .processData(
-              btoa('register').replace('=', ''),
-              { u_f, u_l, u_e, u_p, u_a, otp },
-              2
-            )
-            .subscribe((res: any) => {
-              let payload = this.dataService.decrypt(res.a);
-              if (payload.status['message'] == 'Registered successfully') {
-                // console.log(res.data);
-                this.presentToast(payload.status['message']);
-                // this.dismiss();
-                this._route.navigate(['login']);
-              } else if (res.error) {
-                // console.log(res.error);
-                this.presentToast(res.error);
+      .subscribe(
+        (res: any) => {
+          let payload = this.dataService.decrypt(res.a);
+          console.log(payload);
+          if (payload.data == 'Message has been sent') {
+            this.dataService
+              .processData(
+                btoa('register').replace('=', ''),
+                { u_f, u_l, u_e, u_p, u_a, otp },
+                2
+              )
+              .subscribe(
+                (res: any) => {
+                  let payload = this.dataService.decrypt(res.a);
+                  if (payload.status['message'] == 'Registered successfully') {
+                    // console.log(res.data);
+                    this.presentToast(payload.status['message']);
+                    // this.dismiss();
+                    this._route.navigate(['login']);
+                    loading.dismiss();
+                  } else if (res.error) {
+                    console.log(res.error);
+                    loading.dismiss();
+                    this.presentToast(res.error);
 
-                // this.dismiss();
-              }
-            });
-        } else if (res.error) {
-          // console.log(res.error);
-          this.presentToast(res.error);
+                    // this.dismiss();
+                  }
+                },
+                (er) => {
+                  loading.dismiss();
 
-          // this.dismiss();
+                  this.presentToast('Invalid Inputs');
+                }
+              );
+          } else if (res.error) {
+            console.log(res.error);
+            loading.dismiss();
+            this.presentToast(res.error);
+          }
+        },
+        (er) => {
+          loading.dismiss();
+
+          this.presentToast('Invalid Inputs');
         }
-      });
+      );
+
+    const { role, data } = await loading.onDidDismiss();
   }
 
   onFileChange(event) {

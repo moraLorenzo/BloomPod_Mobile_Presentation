@@ -9,7 +9,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./quickconfirm.page.scss'],
 })
 export class QuickconfirmPage implements OnInit {
-  link = 'http://192.168.100.128/bloompod_api/quick/';
+  link = 'http://bloompod.api.gc-ecommerceapp.com/bloompod_api/quick/';
 
   total: any;
 

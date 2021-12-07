@@ -32,3 +32,18 @@
   font-family: "Inter-Semi"; //This is what we are going to call
   src: url("../src/assets/fonts/Inter-SemiBold.ttf");
 }
+
+.rotate {
+  animation: rotation 2s infinite linear;
+  margin: auto;
+  width: 60%;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
