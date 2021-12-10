@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
 import { DataService } from 'src/app/services/data/data.service';
 import { FlowersService } from 'src/app/services/flower.service';
 
@@ -30,7 +30,8 @@ export class ConfirmcartPage implements OnInit {
     private fs: FlowersService,
     public router: Router,
     public dataService: DataService,
-    public toastController: ToastController
+    public toastController: ToastController,
+    private alertController: AlertController
   ) {}
 
   ngOnInit() {
@@ -92,17 +93,37 @@ export class ConfirmcartPage implements OnInit {
     });
   }
 
-  cancel() {
-    let order_id = this.order_id;
-    let i = history.state.data.i;
-    this.dataService
-      .processData(btoa('cancel').replace('=', ''), { order_id }, 2)
-      .subscribe((dt: any) => {
-        let load = this.dataService.decrypt(dt.a);
-        console.log(load);
-        this.presentToast(load.msg);
-        this.router.navigate(['tabs/tab1']);
-      });
+  async cancel() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Attention!',
+      message: 'Do you wish to cancel and remove this Bouquet?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {},
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            let order_id = this.order_id;
+            let i = history.state.data.i;
+            this.dataService
+              .processData(btoa('cancel').replace('=', ''), { order_id }, 2)
+              .subscribe((dt: any) => {
+                let load = this.dataService.decrypt(dt.a);
+                console.log(load);
+                this.presentToast(load.msg);
+                this.router.navigate(['tabs/tab1']);
+              });
+          },
+        },
+      ],
+    });
+
+    await alert.present();
   }
 
   back() {

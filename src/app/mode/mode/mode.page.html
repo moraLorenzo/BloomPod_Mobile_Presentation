@@ -1,10 +1,17 @@
 <div class="center" style="width: 100%">
-  <ion-card class="ion-activatable ripple-parent">
-    <ion-card-header>
-      <ion-icon name="arrow-back-outline" (click)="back()"></ion-icon>
+  <ion-card class="ion-activatable ripple-parent" style="background: #c5b4e3">
+    <ion-card-header style="background: #c5b4e3">
+      <ion-toolbar color="#c5b4e3">
+        <ion-buttons slot="start" style="margin-left: 1%">
+          <ion-icon
+            name="arrow-back-outline"
+            style="color: white"
+            (click)="back()"
+          ></ion-icon>
+        </ion-buttons>
 
-      <span class="h4"> Please fill</span>
-      <ion-card-title>Floral Details</ion-card-title>
+        <ion-title style="color: white"> Please Fill Floral Details </ion-title>
+      </ion-toolbar>
     </ion-card-header>
 
     <ion-ripple-effect></ion-ripple-effect>
@@ -23,6 +30,10 @@
       <option selected value="Delivery">Delivery</option>
       <option value="Pick Up">Pick Up</option>
     </select>
+    <small
+      >Note: For Delivery Mode of Transaction, We'll Add ₱ 50.00 for convenience
+      fee</small
+    >
   </div>
   <hr />
   <form ngNativeValidate *ngIf="mode == 'Delivery'" (submit)="onSubmit($event)">
@@ -92,7 +103,7 @@
 
     <div class="form-group mx-auto mt-3" style="width: 93%">
       <label>Contact Number</label>
-      <input type="text" class="form-control" required />
+      <input type="number" class="form-control" required />
     </div>
 
     <div class="form-group mx-auto mt-3" style="width: 93%">
@@ -177,7 +188,7 @@
     </div>
     <div class="form-group mx-auto mt-3" style="width: 93%">
       <label>Contact Number</label>
-      <input type="text" class="form-control" required />
+      <input type="number" class="form-control" required />
     </div>
 
     <div class="form-group mx-auto mt-3" style="width: 93%">

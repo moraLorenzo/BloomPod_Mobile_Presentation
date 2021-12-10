@@ -60,6 +60,7 @@ export class ConfirmationPage implements OnInit {
       );
       this.total = this.bouquet_obj.primary_price * 3;
       this.total += +this.bouquet_obj.secondary_price * 3;
+      this.total += 350;
       console.log(this.total);
     } else if (this.bouquet_obj.quantity == 9) {
       this.content = this.fs.nine(
@@ -68,6 +69,7 @@ export class ConfirmationPage implements OnInit {
       );
       this.total = this.bouquet_obj.primary_price * 3;
       this.total += +this.bouquet_obj.secondary_price * 6;
+      this.total += 350;
       console.log(this.total);
     } else if (this.bouquet_obj.quantity == 12) {
       this.content = this.fs.twelve(this.bouquet_obj.primary, [
@@ -78,6 +80,7 @@ export class ConfirmationPage implements OnInit {
       this.total = this.bouquet_obj.primary_price * 4;
       this.total += +this.bouquet_obj.secondary_price * 4;
       this.total += +this.bouquet_obj.tertiary_price * 4;
+      this.total += 350;
       console.log(this.total);
     }
   }

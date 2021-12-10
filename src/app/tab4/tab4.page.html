@@ -14,10 +14,13 @@
 </ion-header> -->
 
 <div class="center">
-  <ion-card class="ion-activatable ripple-parent">
+  <ion-card
+    class="ion-activatable ripple-parent"
+    style="background: #c5b4e3; color: white"
+  >
     <ion-card-header>
-      <ion-card-subtitle>{{address}}</ion-card-subtitle>
-      <ion-card-title class="t1">{{username}}</ion-card-title>
+      <ion-card-subtitle style="color: white">{{address}}</ion-card-subtitle>
+      <ion-card-title style="color: white">{{username}}</ion-card-title>
     </ion-card-header>
 
     <ion-ripple-effect></ion-ripple-effect>
@@ -70,19 +73,30 @@
   <div style="margin-top: 28%; max-height: 75%; overflow-y: scroll">
     <ion-item>
       <ion-list-header>
-        <h3>CART</h3>
+        <h3>Wishlist</h3>
       </ion-list-header>
     </ion-item>
     <div *ngIf="show">
-      <ion-card class="ion-activatable ripple-parent">
-        <ion-card-header>
-          <ion-card-subtitle>No Items in Cart</ion-card-subtitle>
+      <ion-card
+        class="ion-activatable ripple-parent"
+        style="background: #c5b4e3; color: white"
+      >
+        <ion-card-header style="margin: auto; text-align: center">
+          <ion-card-subtitle
+            ><ion-icon
+              size="large"
+              name="help-outline"
+              style="color: white"
+            ></ion-icon
+          ></ion-card-subtitle>
+          <ion-card-title style="color: white"
+            >No Items in Wishlist</ion-card-title
+          >
         </ion-card-header>
 
         <ion-card-content>
-          Keep close to Nature's heart... and break clear away, once in awhile,
-          and climb a mountain or spend a week in the woods. Wash your spirit
-          clean.
+          Go to 'Shop' tab and choose an option (Custom/Quick) then determine
+          florat details and choose add to cart.
         </ion-card-content>
       </ion-card>
     </div>
@@ -95,6 +109,7 @@
           <ion-card
             (click)="confirmcart(i, order)"
             class="ion-activatable ripple-parent"
+            style="background: #c5b4e3; color: white"
           >
             <ion-item lines="none">
               <ion-icon

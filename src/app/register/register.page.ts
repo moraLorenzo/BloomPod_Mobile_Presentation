@@ -16,6 +16,7 @@ interface Location {
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
+  checkBox: boolean = false;
   passwordType: string = 'password';
   passwordIcon: string = 'visibility_off';
   sendfile: FormGroup;
@@ -101,7 +102,7 @@ export class RegisterPage implements OnInit {
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class-login',
       message:
-        '<ion-img src="../../assets/icon/Bloom1.png" alt="loading..." class="rotate"></ion-img><br/> <p>Logging in...</p>',
+        '<ion-img src="../../assets/icon/Bloom1.png" alt="loading..." class="rotate"></ion-img><br/> <p>Registering...</p>',
       translucent: true,
       showBackdrop: false,
       spinner: null,
@@ -226,4 +227,10 @@ export class RegisterPage implements OnInit {
   back() {
     this._route.navigate(['login']);
   }
+
+  // change() {
+  //   // console.log(this.checkBox);
+  //   // this.checkBox = !this.checkBox;
+  //   // console.log(this.checkBox);
+  // }
 }

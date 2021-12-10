@@ -33,6 +33,38 @@
   src: url("../src/assets/fonts/Inter-SemiBold.ttf");
 }
 
+.my-custom-class {
+  --background: #c5b4e3;
+  font-family: "AppFont";
+  font-size: 5vw;
+  color: white !important;
+  p {
+    text-align: center;
+  }
+  button.alert-button {
+    color: white;
+  }
+  message {
+    color: white;
+  }
+}
+
+.my-custom-class-login {
+  background-color: #fce3ea;
+  --background: #c5b4e3;
+  color: white;
+  font-family: "AppFont";
+  font-size: 5vw;
+  color: white;
+  p {
+    text-align: center;
+  }
+  ion-img {
+    margin: auto;
+    width: 50%;
+  }
+}
+
 .rotate {
   animation: rotation 2s infinite linear;
   margin: auto;

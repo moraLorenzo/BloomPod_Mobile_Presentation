@@ -1,11 +1,15 @@
 <div class="center">
-  <ion-card class="ion-activatable ripple-parent" (click)="about()">
+  <ion-card
+    class="ion-activatable ripple-parent"
+    style="background: #c5b4e3; color: white"
+    (click)="about()"
+  >
     <div class="right">
       <ion-icon style="font-size: 30px" name="help-circle"></ion-icon>
     </div>
-    <ion-card-header>
-      <ion-card-subtitle>{{greet}},</ion-card-subtitle>
-      <ion-card-title class="t1">{{username}}</ion-card-title>
+    <ion-card-header style="color: white">
+      <ion-card-subtitle style="color: white">{{greet}},</ion-card-subtitle>
+      <ion-card-title style="color: white">{{username}}</ion-card-title>
       <!-- <small>{{address}}</small> -->
     </ion-card-header>
 

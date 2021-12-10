@@ -23,23 +23,23 @@ export class ModePage implements OnInit {
   municipality: string = 'Olongapo City';
 
   barangays = [
-    { name: 'Barangay Asinan' },
-    { name: 'Barangay Banicain' },
-    { name: 'Barangay Barretto' },
-    { name: 'Barangay East Bajac-Bajac' },
-    { name: 'Barangay East Tapinac' },
-    { name: 'Barangay Gordon Heights' },
-    { name: 'Barangay Kababae' },
-    { name: 'Barangay Kalaklan' },
-    { name: 'Barangay Kalalake' },
-    { name: 'Barangay Mabayuan' },
-    { name: 'Barangay New Cabalan' },
-    { name: 'Barangay New Ilalim' },
-    { name: 'Barangay Old Cabalan' },
-    { name: 'Barangay Pag-Asa' },
-    { name: 'Barangay Sta. Rita' },
-    { name: 'Barangay West Bajac-Bajac' },
-    { name: 'Barangay West Tapinac' },
+    { name: 'Asinan' },
+    { name: 'Banicain' },
+    { name: 'Barretto' },
+    { name: 'East Bajac-Bajac' },
+    { name: 'East Tapinac' },
+    { name: 'Gordon Heights' },
+    { name: 'Kababae' },
+    { name: 'Kalaklan' },
+    { name: 'Kalalake' },
+    { name: 'Mabayuan' },
+    { name: 'New Cabalan' },
+    { name: 'New Ilalim' },
+    { name: 'Old Cabalan' },
+    { name: 'Pag-Asa' },
+    { name: 'Sta. Rita' },
+    { name: 'West Bajac-Bajac' },
+    { name: 'West Tapinac' },
   ];
 
   subic = [
@@ -62,23 +62,23 @@ export class ModePage implements OnInit {
   ];
 
   olongapo = [
-    { name: 'Barangay Asinan' },
-    { name: 'Barangay Banicain' },
-    { name: 'Barangay Barretto' },
-    { name: 'Barangay East Bajac-Bajac' },
-    { name: 'Barangay East Tapinac' },
-    { name: 'Barangay Gordon Heights' },
-    { name: 'Barangay Kababae' },
-    { name: 'Barangay Kalaklan' },
-    { name: 'Barangay Kalalake' },
-    { name: 'Barangay Mabayuan' },
-    { name: 'Barangay New Cabalan' },
-    { name: 'Barangay New Ilalim' },
-    { name: 'Barangay Old Cabalan' },
-    { name: 'Barangay Pag-Asa' },
-    { name: 'Barangay Sta. Rita' },
-    { name: 'Barangay West Bajac-Bajac' },
-    { name: 'Barangay West Tapinac' },
+    { name: 'Asinan' },
+    { name: 'Banicain' },
+    { name: 'Barretto' },
+    { name: 'East Bajac-Bajac' },
+    { name: 'East Tapinac' },
+    { name: 'Gordon Heights' },
+    { name: 'Kababae' },
+    { name: 'Kalaklan' },
+    { name: 'Kalalake' },
+    { name: 'Mabayuan' },
+    { name: 'New Cabalan' },
+    { name: 'New Ilalim' },
+    { name: 'Old Cabalan' },
+    { name: 'Pag-Asa' },
+    { name: 'Sta. Rita' },
+    { name: 'West Bajac-Bajac' },
+    { name: 'West Tapinac' },
   ];
 
   selectedValue = null;
@@ -148,7 +148,7 @@ export class ModePage implements OnInit {
       cssClass: 'my-custom-class',
       header: 'Attention!',
       message:
-        'Do you confirm that before proceeding you have checked all the information given with no typographical errors?',
+        'Do you confirm that before proceeding you have checked all the information given with no typographical error?',
       buttons: [
         {
           text: 'Cancel',
@@ -164,7 +164,7 @@ export class ModePage implements OnInit {
             const loading = await this.loadingController.create({
               cssClass: 'my-custom-class-login',
               message:
-                '<ion-img src="../../assets/icon/Bloom1.png" alt="loading..." class="rotate"></ion-img><br/> <p>Logging in...</p>',
+                '<ion-img src="../../assets/icon/Bloom1.png" alt="loading..." class="rotate"></ion-img><br/> <p>Processing...</p>',
               translucent: true,
               showBackdrop: false,
               spinner: null,
@@ -192,7 +192,8 @@ export class ModePage implements OnInit {
               let secondary_flower = this.order_obj.secondary;
               let tertiary_flower = this.order_obj.tertiary;
               let quantity = this.order_obj.quantity;
-              let order_totalprice = this.order_obj.total;
+              let order_totalprice = this.order_obj.total + 50;
+              console.log(order_totalprice);
               let order_id = this.order_obj.order_id;
 
               let order_payment = this.mode;
@@ -246,6 +247,7 @@ export class ModePage implements OnInit {
                   (dt: any) => {
                     // console.log(dt.a);
                     let load = this.dataService.decrypt(dt.a);
+                    console.log(order_totalprice);
                     console.log(load.status);
                     loading.dismiss();
                     this.presentToast(load.status.message);
@@ -286,7 +288,7 @@ export class ModePage implements OnInit {
                 let secondary_flower = this.order_obj.secondary;
                 let tertiary_flower = this.order_obj.tertiary;
                 let quantity = this.order_obj.quantity;
-                let order_totalprice = this.order_obj.total;
+                let order_totalprice = this.order_obj.total + 50;
                 let order_id = this.order_obj.order_id;
                 let order_payment = this.mode;
 
@@ -388,7 +390,7 @@ export class ModePage implements OnInit {
             const loading = await this.loadingController.create({
               cssClass: 'my-custom-class-login',
               message:
-                '<ion-img src="../../assets/icon/Bloom1.png" alt="loading..." class="rotate"></ion-img><br/> <p>Logging in...</p>',
+                '<ion-img src="../../assets/icon/Bloom1.png" alt="loading..." class="rotate"></ion-img><br/> <p>Processing...</p>',
               translucent: true,
               showBackdrop: false,
               spinner: null,

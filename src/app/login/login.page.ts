@@ -109,16 +109,19 @@ export class LoginPage implements OnInit {
             load.status['remarks'] == 'failed' &&
             load.status['message'] == 'Email not yet verified'
           ) {
+            loading.dismiss();
             this.presentToast(load.status['message']);
             this.presentPopover();
           } else if (
             load.status['remarks'] == 'failed' &&
             load.status['message'] == 'Incorrect username or password'
           ) {
+            loading.dismiss();
             this.presentToast(load.status['message']);
           }
         },
         (er) => {
+          loading.dismiss();
           this.presentToast('Invalid Inputs');
         }
       );
@@ -158,7 +161,7 @@ export class LoginPage implements OnInit {
           // console.log(load.status);
 
           if (load.status['remarks'] == 'success') {
-            this.userService.setUser(load.payload.name.data[0]);
+            this.userService.setUser(load.payload.name[0]);
 
             this._router.navigate(['tabs']);
           } else if (load.status['remarks'] == 'failed') {

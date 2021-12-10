@@ -20,23 +20,23 @@ export class QuickmodePage implements OnInit {
   user_obj: any;
 
   barangays = [
-    { name: 'Barangay Asinan' },
-    { name: 'Barangay Banicain' },
-    { name: 'Barangay Barretto' },
-    { name: 'Barangay East Bajac-Bajac' },
-    { name: 'Barangay East Tapinac' },
-    { name: 'Barangay Gordon Heights' },
-    { name: 'Barangay Kababae' },
-    { name: 'Barangay Kalaklan' },
-    { name: 'Barangay Kalalake' },
-    { name: 'Barangay Mabayuan' },
-    { name: 'Barangay New Cabalan' },
-    { name: 'Barangay New Ilalim' },
-    { name: 'Barangay Old Cabalan' },
-    { name: 'Barangay Pag-Asa' },
-    { name: 'Barangay Sta. Rita' },
-    { name: 'Barangay West Bajac-Bajac' },
-    { name: 'Barangay West Tapinac' },
+    { name: 'Asinan' },
+    { name: 'Banicain' },
+    { name: 'Barretto' },
+    { name: 'East Bajac-Bajac' },
+    { name: 'East Tapinac' },
+    { name: 'Gordon Heights' },
+    { name: 'Kababae' },
+    { name: 'Kalaklan' },
+    { name: 'Kalalake' },
+    { name: 'Mabayuan' },
+    { name: 'New Cabalan' },
+    { name: 'New Ilalim' },
+    { name: 'Old Cabalan' },
+    { name: 'Pag-Asa' },
+    { name: 'Sta. Rita' },
+    { name: 'West Bajac-Bajac' },
+    { name: 'West Tapinac' },
   ];
 
   subic = [
@@ -59,23 +59,23 @@ export class QuickmodePage implements OnInit {
   ];
 
   olongapo = [
-    { name: 'Barangay Asinan' },
-    { name: 'Barangay Banicain' },
-    { name: 'Barangay Barretto' },
-    { name: 'Barangay East Bajac-Bajac' },
-    { name: 'Barangay East Tapinac' },
-    { name: 'Barangay Gordon Heights' },
-    { name: 'Barangay Kababae' },
-    { name: 'Barangay Kalaklan' },
-    { name: 'Barangay Kalalake' },
-    { name: 'Barangay Mabayuan' },
-    { name: 'Barangay New Cabalan' },
-    { name: 'Barangay New Ilalim' },
-    { name: 'Barangay Old Cabalan' },
-    { name: 'Barangay Pag-Asa' },
-    { name: 'Barangay Sta. Rita' },
-    { name: 'Barangay West Bajac-Bajac' },
-    { name: 'Barangay West Tapinac' },
+    { name: 'Asinan' },
+    { name: 'Banicain' },
+    { name: 'Barretto' },
+    { name: 'East Bajac-Bajac' },
+    { name: 'East Tapinac' },
+    { name: 'Gordon Heights' },
+    { name: 'Kababae' },
+    { name: 'Kalaklan' },
+    { name: 'Kalalake' },
+    { name: 'Mabayuan' },
+    { name: 'New Cabalan' },
+    { name: 'New Ilalim' },
+    { name: 'Old Cabalan' },
+    { name: 'Pag-Asa' },
+    { name: 'Sta. Rita' },
+    { name: 'West Bajac-Bajac' },
+    { name: 'West Tapinac' },
   ];
 
   selectedValue = null;
@@ -166,7 +166,7 @@ export class QuickmodePage implements OnInit {
             const loading = await this.loadingController.create({
               cssClass: 'my-custom-class-login',
               message:
-                '<ion-img src="../../assets/icon/Bloom1.png" alt="loading..." class="rotate"></ion-img><br/> <p>Logging in...</p>',
+                '<ion-img src="../../assets/icon/Bloom1.png" alt="loading..." class="rotate"></ion-img><br/> <p>Processing...</p>',
               translucent: true,
               showBackdrop: false,
               spinner: null,
@@ -193,7 +193,8 @@ export class QuickmodePage implements OnInit {
               let secondary_flower = null;
               let tertiary_flower = null;
               let quantity = null;
-              let order_totalprice = this.bouquet_obj.quick_price;
+
+              let order_totalprice = this.bouquet_obj.quick_price + 50;
               let order_id = null;
               let order_payment = this.mode;
               let order_time = desiredTime;
@@ -279,7 +280,7 @@ export class QuickmodePage implements OnInit {
                 let secondary_flower = null;
                 let tertiary_flower = null;
                 let quantity = null;
-                let order_totalprice = this.bouquet_obj.quick_price;
+                let order_totalprice = this.bouquet_obj.quick_price + 50;
                 let order_id = null;
                 let order_payment = this.mode;
                 let order_time = desiredTime;
@@ -383,7 +384,7 @@ export class QuickmodePage implements OnInit {
             const loading = await this.loadingController.create({
               cssClass: 'my-custom-class-login',
               message:
-                '<ion-img src="../../assets/icon/Bloom1.png" alt="loading..." class="rotate"></ion-img><br/> <p>Logging in...</p>',
+                '<ion-img src="../../assets/icon/Bloom1.png" alt="loading..." class="rotate"></ion-img><br/> <p>Processing...</p>',
               translucent: true,
               showBackdrop: false,
               spinner: null,
