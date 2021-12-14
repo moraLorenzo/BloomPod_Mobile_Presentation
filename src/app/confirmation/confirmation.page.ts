@@ -104,7 +104,7 @@ export class ConfirmationPage implements OnInit {
 
   add_to_cart() {
     let user_id = this.userId;
-    let order_flower = 'Generated Bouquet';
+    let order_flower = 'Generated Flower Bouquet';
     let main_flower = this.primary;
     let secondary_flower = this.secondary;
     let tertiary_flower = this.tertiary;

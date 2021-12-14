@@ -74,14 +74,12 @@
               style="color: white"
             ></ion-icon
           ></ion-card-subtitle>
-          <ion-card-title style="color: white"
-            >No Items in Wishlist</ion-card-title
-          >
+          <ion-card-title style="color: white">No Items in Cart</ion-card-title>
         </ion-card-header>
 
         <ion-card-content>
-          Go to 'Shop' tab and choose an option (Custom/Quick) then determine
-          florat details and choose add to cart.
+          Go to 'Shop' tab and choose an option (Customize/Florist Choice) then
+          determine floral details and choose add to cart.
         </ion-card-content>
       </ion-card>
     </div>
@@ -100,10 +98,12 @@
               <ion-icon
                 name="flower-outline"
                 slot="start"
-                *ngIf="order.order_flower == 'Generated Bouquet'"
+                *ngIf="order.order_flower == 'Generated Flower Bouquet'"
                 size="large"
               ></ion-icon>
-              <ion-avatar *ngIf="order.order_flower != 'Generated Bouquet'">
+              <ion-avatar
+                *ngIf="order.order_flower != 'Generated Flower Bouquet'"
+              >
                 <img
                   src="http://bloompod.api.gc-ecommerceapp.com/bloompod_api/quick/{{order.order_flower}}.jpg"
                   alt=""
@@ -111,7 +111,7 @@
 
               <ion-label>
                 <ion-card-subtitle
-                  *ngIf="order.order_flower=='Generated Bouquet'; else flowername"
+                  *ngIf="order.order_flower=='Generated Flower Bouquet'; else flowername"
                   >{{order.order_flower}} {{i+1}}</ion-card-subtitle
                 >
                 <ng-template #flowername

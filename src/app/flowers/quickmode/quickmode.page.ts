@@ -212,7 +212,8 @@ export class QuickmodePage implements OnInit {
               let order_contact = e.target[5].value;
 
               let order_message = e.target[8].value;
-              let order_purpose = e.target[9].value;
+              // let order_purpose = e.target[9].value;
+              let order_purpose = '';
               if (quantity == 6 || quantity == 9) {
                 tertiary_flower = null;
               }
@@ -298,7 +299,8 @@ export class QuickmodePage implements OnInit {
                 let order_contact = e.target[5].value;
 
                 let order_message = e.target[8].value;
-                let order_purpose = e.target[9].value;
+                // let order_purpose = e.target[9].value;
+                let order_purpose = '';
                 console.log(e.target[3].value);
                 if (quantity == 6 || quantity == 9) {
                   tertiary_flower = null;
@@ -423,7 +425,8 @@ export class QuickmodePage implements OnInit {
               let order_contact = e.target[2].value;
 
               let order_message = e.target[3].value;
-              let order_purpose = e.target[4].value;
+              // let order_purpose = e.target[4].value;
+              let order_purpose = '';
 
               if (quantity == 6 || quantity == 9) {
                 tertiary_flower = null;
@@ -507,7 +510,9 @@ export class QuickmodePage implements OnInit {
                 let order_contact = e.target[2].value;
 
                 let order_message = e.target[3].value;
-                let order_purpose = e.target[4].value;
+                // let order_purpose = e.target[4].value;
+                let order_purpose = '';
+
                 console.log(e.target[2].value);
                 if (quantity == 6 || quantity == 9) {
                   tertiary_flower = null;
