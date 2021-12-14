@@ -14,7 +14,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./quickmode.page.scss'],
 })
 export class QuickmodePage implements OnInit {
-  mode: string = 'Delivery';
+  mode: string = 'Pick Up';
   time: string = '';
   userId: any;
   user_obj: any;

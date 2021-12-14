@@ -1,16 +1,18 @@
 <div class="center" style="width: 100%">
-  <ion-card class="ion-activatable ripple-parent" style="background: #c5b4e3">
-    <ion-card-header style="background: #c5b4e3">
+  <ion-card class="ion-activatable ripple-parent" style="background: #44dcb6">
+    <ion-card-header>
       <ion-toolbar color="#c5b4e3">
         <ion-buttons slot="start" style="margin-left: 1%">
           <ion-icon
             name="arrow-back-outline"
-            style="color: white"
+            style="color: #08595e"
             (click)="back()"
           ></ion-icon>
         </ion-buttons>
 
-        <ion-title style="color: white"> Please Fill Floral Details </ion-title>
+        <ion-title style="color: #08595e">
+          Please Fill Floral Details
+        </ion-title>
       </ion-toolbar>
     </ion-card-header>
 
@@ -46,7 +48,7 @@
     <ion-row id="gridInput">
       <ion-col size="6" *ngFor="let flower of Flowers;let i = index;">
         <ion-card
-          color="primary"
+          style="background-color: #44dcb6; color: #08595e; font-weight: 500"
           (click)="generate(flower.flower_name, flower.flower_price)"
         >
           <div class="card">

@@ -10,6 +10,7 @@ import { DataService } from 'src/app/services/data/data.service';
 })
 export class QuickPage implements OnInit {
   Flowers: any;
+  flower_obj: any;
 
   prices = [];
   //To be continued
@@ -29,6 +30,7 @@ export class QuickPage implements OnInit {
           let load = this.dataService.decrypt(dt.a);
           console.log(load);
           this.Flowers = load.payload.data;
+          this.flower_obj = load.payload.data;
         },
         (er) => {
           console.log('Invalid Inputs', er);
@@ -36,25 +38,23 @@ export class QuickPage implements OnInit {
       );
   }
 
-  onChange(deviceValue: any) {
-    console.log(this.Flowers);
+  onChange(value: any) {
+    // console.log(value);
 
-    if (this.Flowers.length == 0) {
-      this.ionViewWillEnter();
-    }
-
-    if (deviceValue == 1) {
-      this.Flowers = this.Flowers.filter((x) => x.quick_price < 200);
-    } else if (deviceValue == 2) {
-      this.Flowers = this.Flowers.filter(
-        (x) => x.quick_price > 200 && x.quick_price < 400
+    if (value == 1) {
+      this.Flowers = this.flower_obj.filter((x: any) => x.quick_price < 300);
+    } else if (value == 2) {
+      this.Flowers = this.flower_obj.filter(
+        (x: any) => x.quick_price >= 300 && x.quick_price < 600
       );
-    } else if (deviceValue == 3) {
-      this.Flowers = this.Flowers.filter(
-        (x) => x.quick_price > 400 && x.quick_price < 600
+    } else if (value == 3) {
+      this.Flowers = this.flower_obj.filter(
+        (x: any) => x.quick_price >= 600 && x.quick_price < 800
       );
-    } else if (deviceValue == 4) {
-      this.Flowers = this.Flowers.filter((x) => x.quick_price > 600);
+    } else if (value == 4) {
+      this.Flowers = this.flower_obj.filter((x: any) => x.quick_price >= 800);
+    } else {
+      this.Flowers = this.flower_obj;
     }
   }
 

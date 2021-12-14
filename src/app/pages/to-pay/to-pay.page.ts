@@ -1,7 +1,7 @@
 import { splitClasses } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
 import { DataService } from 'src/app/services/data/data.service';
 import { UserService } from 'src/app/services/user.service';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
@@ -26,7 +26,8 @@ export class ToPayPage implements OnInit {
     public router: Router,
     public dataService: DataService,
     public toastController: ToastController,
-    private camera: Camera
+    private camera: Camera,
+    private alertController: AlertController
   ) {
     this.orderPayload = new Order();
   }
@@ -47,17 +48,38 @@ export class ToPayPage implements OnInit {
     this.router.navigate(['tabs/tab4']);
   }
 
-  cancel(i, order) {
-    let order_id = order.order_id;
-    // console.log(order_id);
-    this.orders.splice(i, 1);
-    this.dataService
-      .processData(btoa('cancel').replace('=', ''), { order_id }, 2)
-      .subscribe((dt: any) => {
-        let load = this.dataService.decrypt(dt.a);
-        console.log(load.msg);
-        this.presentToast('Order Cancelled');
-      });
+  async cancel(i, order) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Attention!',
+      message: 'Do you wish to Cancel and remove this Order?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {},
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            let order_id = order.order_id;
+            // console.log(order_id);
+
+            this.dataService
+              .processData(btoa('cancel').replace('=', ''), { order_id }, 2)
+              .subscribe((dt: any) => {
+                let load = this.dataService.decrypt(dt.a);
+                console.log(load.msg);
+                this.orders.splice(i, 1);
+                this.presentToast('Order Cancelled');
+              });
+          },
+        },
+      ],
+    });
+
+    await alert.present();
   }
 
   async presentToast(msg) {

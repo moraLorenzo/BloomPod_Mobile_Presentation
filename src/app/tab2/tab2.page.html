@@ -1,13 +1,13 @@
 <div class="center">
   <ion-card
     class="ion-activatable ripple-parent"
-    style="background: #c5b4e3; color: white"
+    style="background: #44dcb6; color: white"
   >
     <ion-card-header>
-      <ion-card-subtitle style="color: white"
+      <ion-card-subtitle style="color: #08595e"
         >To Determine Your Flower Arrangement</ion-card-subtitle
       >
-      <ion-card-title style="color: white"
+      <ion-card-title style="color: #08595e"
         >PLEASE CHOOSE AN OPTION BELOW</ion-card-title
       >
     </ion-card-header>
@@ -21,7 +21,7 @@
     <div class="middle">
       <div class="inner">
         <ion-grid>
-          <ion-row>
+          <ion-row style="height: 300px">
             <ion-card
               color="primary"
               class="card1 ion-activatable ripple-parent"
@@ -46,7 +46,17 @@
               <ion-ripple-effect></ion-ripple-effect>
             </ion-card>
           </ion-row>
-          <ion-row>
+
+          <ion-row style="margin: auto; height: 50px">
+            <!-- <ion-button
+              float="right"
+              style="width: 100%"
+              (click)="gotoCustom()"
+            >
+              <ion-icon style="padding: 2px" name="brush-outline"></ion-icon>
+              Customize
+            </ion-button> -->
+
             <ion-card
               color="primary"
               class="card1 ion-activatable ripple-parent"
@@ -56,17 +66,35 @@
                 <ion-card-subtitle
                   ><ion-icon size="large" name="brush-outline"></ion-icon
                 ></ion-card-subtitle>
-                <ion-card-title>Customer Choice (Custom)</ion-card-title>
+                <ion-card-title>Customize</ion-card-title>
               </ion-card-header>
 
-              <ion-card-content>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
-              </ion-card-content>
               <ion-ripple-effect></ion-ripple-effect>
             </ion-card>
+            <!-- <ion-col></ion-col>
+            <ion-col>
+              <ion-button
+                float="right"
+                style="width: 95%"
+                (click)="gotoCustom()"
+              >
+                <ion-icon style="padding: 2px" name="brush-outline"></ion-icon>
+                Customize
+              </ion-button></ion-col> -->
+
+            <!-- <ion-card
+              color="primary"
+              class="card1 ion-activatable ripple-parent"
+              (click)="gotoCustom()"
+            >
+              <ion-card-header style="margin: auto; text-align: center">
+                <ion-card-subtitle
+                  ><ion-icon size="large" name="brush-outline"></ion-icon
+                ></ion-card-subtitle>
+                <ion-card-title>Customize</ion-card-title>
+              </ion-card-header>
+              <ion-ripple-effect></ion-ripple-effect>
+            </ion-card> -->
           </ion-row>
         </ion-grid>
       </div>

@@ -1,20 +1,11 @@
 <ion-content [fullscreen]="true">
+  <ion-card-header>
+    <ion-icon name="arrow-back-outline" (click)="back()"></ion-icon>
+  </ion-card-header>
   <br />
-  <div class="center">
-    <ion-toolbar>
-      <ion-buttons slot="start" style="margin-left: 3%">
-        <ion-icon name="arrow-back-outline" (click)="back()"></ion-icon>
-      </ion-buttons>
-
-      <ion-title>
-        <ion-card-subtitle>Please accomplish the form to</ion-card-subtitle>
-        <ion-card-title>Register</ion-card-title>
-      </ion-title>
-    </ion-toolbar>
-  </div>
 
   <br />
-  <div style="width: 90%; background-color: #fce3ea" class="card mx-auto">
+  <!-- <div style="width: 90%; background-color: #fce3ea" class="card mx-auto">
     <form
       style="width: 95%; margin: auto"
       class="p-3"
@@ -71,12 +62,6 @@
           required
         />
       </div>
-
-      <!-- <div class="form-group">
-      <label>Confirm Password</label>
-      <input type="password" class="form-control" required />
-    </div> -->
-      <br />
       <div class="form-check">
         <input
           class="form-check-input"
@@ -107,5 +92,171 @@
 
       <br />
     </form>
+  </div> -->
+
+  <!-- Register Design -->
+  <div class="container h-100">
+    <div class="d-flex justify-content-center h-100">
+      <div class="user_card">
+        <div class="d-flex justify-content-center">
+          <div class="brand_logo_container">
+            <img
+              src="../../../assets/icon/Bloom1.png"
+              class="brand_logo"
+              alt="Logo"
+            />
+          </div>
+        </div>
+        <div class="d-flex justify-content-center form_container">
+          <form
+            ngNativeValidate
+            (submit)="onSubmit($event)"
+            [formGroup]="registrationform"
+          >
+            <div class="input-group mb-3">
+              <div class="input-group-append">
+                <span class="input-group-text"
+                  ><ion-icon
+                    name="person-outline"
+                    style="font-size: 25px"
+                  ></ion-icon
+                ></span>
+              </div>
+              <input
+                type="text"
+                name=""
+                class="form-control input_user"
+                value=""
+                formControlName="firstname"
+                placeholder="Firstname"
+                required
+              />
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-append">
+                <span class="input-group-text"
+                  ><ion-icon
+                    name="person-outline"
+                    style="font-size: 25px"
+                  ></ion-icon
+                ></span>
+              </div>
+              <input
+                type="text"
+                name=""
+                class="form-control input_user"
+                value=""
+                formControlName="lastname"
+                placeholder="Lastname"
+                required
+              />
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="input-group-append">
+                <span class="input-group-text"
+                  ><ion-icon
+                    name="home-outline"
+                    style="font-size: 25px"
+                  ></ion-icon
+                ></span>
+              </div>
+              <input
+                type="text"
+                name=""
+                class="form-control input_user"
+                value=""
+                formControlName="address"
+                placeholder="Home Address"
+                required
+              />
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="input-group-append">
+                <span class="input-group-text"
+                  ><ion-icon
+                    name="at-circle-outline"
+                    style="font-size: 25px"
+                  ></ion-icon
+                ></span>
+              </div>
+              <input
+                type="email"
+                name=""
+                class="form-control input_user"
+                value=""
+                formControlName="email"
+                placeholder="Email"
+                required
+              />
+            </div>
+            <div class="input-group mb-2">
+              <div class="input-group-append">
+                <span class="input-group-text"
+                  ><ion-icon
+                    name="key-outline"
+                    style="font-size: 25px"
+                  ></ion-icon
+                ></span>
+              </div>
+              <input
+                [type]="passwordType"
+                name=""
+                class="form-control input_pass"
+                value=""
+                formControlName="password"
+                placeholder="Password"
+                required
+              />
+            </div>
+
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="flexCheckDefault1"
+                (change)="onChange()"
+                [(ngModel)]="checkBox1"
+                [ngModelOptions]="{standalone: true}"
+              />
+              <small
+                ><label class="form-check-label" for="flexCheckDefault1">
+                  Show Password
+                </label></small
+              >
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                value=""
+                id="flexCheckDefault"
+                [(ngModel)]="checkBox"
+                [ngModelOptions]="{standalone: true}"
+              />
+              <small
+                ><label class="form-check-label" for="flexCheckDefault">
+                  I agree with Details & Blooms'
+                  <a href="">Terms and Conditions</a>
+                </label></small
+              >
+            </div>
+
+            <div class="d-flex justify-content-center mt-3 login_container">
+              <button
+                type="submit"
+                name="button"
+                class="btn login_btn"
+                [disabled]="!checkBox"
+              >
+                Register
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 </ion-content>

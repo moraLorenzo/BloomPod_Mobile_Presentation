@@ -14,9 +14,20 @@ ion-text {
 }
 
 .myColor {
-  background-color: #6e5b98;
+  background-color: #44dcb6;
   text-align: center;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: #08595e;
+}
+
+ion-button {
+  --background: #44dcb6;
+  color: #08595e;
+  font-weight: 500;
+  float: right;
+}
+
+ion-footer {
+  --background: #44dcb6;
 }

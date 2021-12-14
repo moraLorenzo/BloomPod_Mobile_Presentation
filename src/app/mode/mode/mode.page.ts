@@ -15,7 +15,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ModePage implements OnInit {
   order_obj: any;
-  mode: string = 'Delivery';
+  mode: string = 'Pick Up';
   time: string = '';
   userId: any;
   user_obj: any;

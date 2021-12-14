@@ -5,12 +5,36 @@
 }
 .center {
   margin: auto;
-  background-color: #fce3ea;
 }
 ion-icon {
   font-size: 22px;
 }
 
-ion-content {
-  --ion-background-color: #fce3ea;
+h1.strikearound {
+  position: relative;
+  font-size: 30px;
+  color: #08595e;
+  z-index: 1;
+  overflow: hidden;
+  text-align: center;
+}
+
+h1.strikearound:before,
+h1.strikearound:after {
+  position: absolute;
+  top: 51%;
+  overflow: hidden;
+  width: 50%;
+  height: 1px;
+  content: "\a0";
+  background-color: grey;
+}
+
+h1.strikearound:before {
+  margin-left: -50%;
+  text-align: right;
+}
+
+* {
+  color: #08595e;
 }

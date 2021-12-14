@@ -21,6 +21,7 @@ export class LoginPage implements OnInit {
   passwordIcon: string = 'visibility_off';
   isAccepted: boolean = false;
   OTP: any;
+  checkBox: boolean = false;
 
   constructor(
     private _router: Router,
@@ -149,6 +150,7 @@ export class LoginPage implements OnInit {
   }
 
   user_OTP() {
+    console.log(this.email);
     this.dataService
       .processData(
         btoa('otp').replace('=', ''),
@@ -173,5 +175,10 @@ export class LoginPage implements OnInit {
           this.presentToast('Invalid Inputs OTP');
         }
       );
+  }
+
+  onChange() {
+    console.log(this.checkBox);
+    this.passwordType = this.passwordType === 'text' ? 'password' : 'text';
   }
 }

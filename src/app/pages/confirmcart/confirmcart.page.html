@@ -43,13 +43,25 @@
             >
 
             <ion-col>
-              <ion-button (click)="cancel()" style="float: right" color="danger"
-                >Cancel
+              <!-- <ion-button
+                (click)="cancel()"
+                style="float: right"
+                color="danger"
+                clear
+              >
                 <ion-icon
                   name="alert-circle-outline"
                   style="padding-left: 15px"
                 ></ion-icon
-              ></ion-button>
+              ></ion-button> -->
+
+              <button
+                type="button"
+                class="btn btn-outline-danger"
+                style="float: right"
+              >
+                <ion-icon name="alert-circle-outline" color="danger"></ion-icon>
+              </button>
             </ion-col>
           </ion-row>
           <!-- <ion-row class="p-3">

@@ -17,6 +17,7 @@ interface Location {
 })
 export class RegisterPage implements OnInit {
   checkBox: boolean = false;
+  checkBox1: boolean = false;
   passwordType: string = 'password';
   passwordIcon: string = 'visibility_off';
   sendfile: FormGroup;
@@ -233,4 +234,9 @@ export class RegisterPage implements OnInit {
   //   // this.checkBox = !this.checkBox;
   //   // console.log(this.checkBox);
   // }
+
+  onChange() {
+    console.log(this.checkBox);
+    this.passwordType = this.passwordType === 'text' ? 'password' : 'text';
+  }
 }

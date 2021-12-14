@@ -10,9 +10,15 @@ ion-icon {
   font-size: 22px;
 }
 .myColor {
-  background-color: #6e5b98;
+  background-color: #44dcb6;
   text-align: center;
   justify-content: center;
   align-items: center;
   color: white;
+}
+ion-button {
+  --background: #44dcb6;
+}
+* {
+  color: #08595e;
 }

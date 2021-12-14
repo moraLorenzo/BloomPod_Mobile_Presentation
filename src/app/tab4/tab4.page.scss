@@ -17,7 +17,6 @@
   // border: 3px solid green;
   // padding: 10px;
   font-family: "Inter";
-  background-color: #fce3ea;
 }
 
 .middle {
@@ -45,18 +44,26 @@ ion-card {
 }
 
 .bg {
-  --background: linear-gradient(180deg, #894794 0%, #db8691 100%);
+  --background: linear-gradient(307.03deg, #44dcb6 17.31%, #49d443 70.52%);
 }
 
 .t1 {
-  background: -webkit-linear-gradient(180deg, #894794 0%, #db8691 100%);
+  background: -webkit-linear-gradient(
+    307.03deg,
+    #44dcb6 17.31%,
+    #49d443 70.52%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-ion-content {
-  --ion-background-color: #fce3ea;
-}
 
 ion-card {
-  background: #c5b4e3 !important;
+  background: #44dcb6 !important;
+}
+
+* {
+  color: #08595e;
+}
+ion-avatar {
+  margin-right: 25px;
 }

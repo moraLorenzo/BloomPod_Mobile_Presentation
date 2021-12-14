@@ -1,26 +1,11 @@
-<!-- <ion-header translucent class="ion-no-border">
-  <ion-toolbar>
-    <div class="center">
-      <ion-card class="ion-activatable ripple-parent">
-        <ion-card-header>
-          <ion-card-subtitle>{{address}}</ion-card-subtitle>
-          <ion-card-title class="t1">{{username}}</ion-card-title>
-        </ion-card-header>
-
-        <ion-ripple-effect></ion-ripple-effect>
-      </ion-card>
-    </div>
-  </ion-toolbar>
-</ion-header> -->
-
 <div class="center">
   <ion-card
     class="ion-activatable ripple-parent"
-    style="background: #c5b4e3; color: white"
+    style="background: #44dcb6; color: white"
   >
     <ion-card-header>
-      <ion-card-subtitle style="color: white">{{address}}</ion-card-subtitle>
-      <ion-card-title style="color: white">{{username}}</ion-card-title>
+      <ion-card-subtitle style="color: #08595e">{{address}}</ion-card-subtitle>
+      <ion-card-title style="color: #08595e">{{username}}</ion-card-title>
     </ion-card-header>
 
     <ion-ripple-effect></ion-ripple-effect>
@@ -73,7 +58,7 @@
   <div style="margin-top: 28%; max-height: 75%; overflow-y: scroll">
     <ion-item>
       <ion-list-header>
-        <h3>Wishlist</h3>
+        <h3>Cart</h3>
       </ion-list-header>
     </ion-item>
     <div *ngIf="show">
@@ -115,8 +100,15 @@
               <ion-icon
                 name="flower-outline"
                 slot="start"
+                *ngIf="order.order_flower == 'Generated Bouquet'"
                 size="large"
               ></ion-icon>
+              <ion-avatar *ngIf="order.order_flower != 'Generated Bouquet'">
+                <img
+                  src="http://bloompod.api.gc-ecommerceapp.com/bloompod_api/quick/{{order.order_flower}}.jpg"
+                  alt=""
+              /></ion-avatar>
+
               <ion-label>
                 <ion-card-subtitle
                   *ngIf="order.order_flower=='Generated Bouquet'; else flowername"

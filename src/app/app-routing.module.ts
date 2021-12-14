@@ -129,7 +129,15 @@ const routes: Routes = [
         (m) => m.PaymentConfirmationPageModule
       ),
     canActivate: [AuthGuard],
+  },  {
+    path: 'terms',
+    loadChildren: () => import('./modal/terms/terms.module').then( m => m.TermsPageModule)
   },
+  {
+    path: 'about',
+    loadChildren: () => import('./modal/about/about.module').then( m => m.AboutPageModule)
+  },
+
 ];
 @NgModule({
   imports: [

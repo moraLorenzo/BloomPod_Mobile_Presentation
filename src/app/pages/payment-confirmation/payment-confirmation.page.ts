@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
 import { DataService } from 'src/app/services/data/data.service';
 import { FlowersService } from 'src/app/services/flower.service';
 import { Order } from '../../models/order';
@@ -36,7 +36,8 @@ export class PaymentConfirmationPage implements OnInit {
     public router: Router,
     public dataService: DataService,
     public toastController: ToastController,
-    private camera: Camera
+    private camera: Camera,
+    private alertController: AlertController
   ) {
     this.orderPayload = new Order();
   }
@@ -86,13 +87,34 @@ export class PaymentConfirmationPage implements OnInit {
     this.router.navigate(['toPay']);
   }
 
-  pay() {
-    if (this.imgURL == '../../../assets/icon/addImage.png') {
-      this.presentToast('Please Upload an Image First');
-    } else {
-      this.orderPayload.order_id = this.orders.order_id;
-      this.update();
-    }
+  async pay() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Attention!',
+      message:
+        'Do you confirm that before proceeding, you have checked the fields required without any issues?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {},
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            if (this.imgURL == '../../../assets/icon/addImage.png') {
+              this.presentToast('Please Upload an Image First');
+            } else {
+              this.orderPayload.order_id = this.orders.order_id;
+              this.update();
+            }
+          },
+        },
+      ],
+    });
+
+    await alert.present();
   }
 
   getGallery() {

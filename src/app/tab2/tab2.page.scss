@@ -7,7 +7,6 @@
   // border: 3px solid green;
   // padding: 10px;
   font-family: "Inter";
-  background-color: #fce3ea;
 }
 .outer {
   display: table;
@@ -19,7 +18,7 @@
 }
 
 .middle {
-  display: table-cell;
+  // display: table-cell;
   vertical-align: middle;
 }
 
@@ -45,15 +44,23 @@ ion-card {
 .card1 {
   border-radius: 25px;
 
-  background: linear-gradient(180deg, #894794 0%, #db8691 100%);
-}
-
-ion-content {
-  --ion-background-color: #fce3ea;
+  background: linear-gradient(307.03deg, #44dcb6 17.31%, #49d443 70.52%);
 }
 
 .t1 {
-  background: -webkit-linear-gradient(180deg, #894794 0%, #db8691 100%);
+  background: -webkit-linear-gradient(
+    307.03deg,
+    #44dcb6 17.31%,
+    #49d443 70.52%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+ion-button {
+  --background: #44dcb6;
+}
+
+* {
+  color: #08595e;
 }

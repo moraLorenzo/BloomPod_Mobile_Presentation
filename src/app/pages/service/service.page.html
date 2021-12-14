@@ -1,17 +1,8 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Service Method</ion-title>
-    <ion-router-link
-      (click)="back()"
-      slot="end"
-      class="underline"
-      style="margin: 10px"
-      >Back</ion-router-link
-    >
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <ion-card-header>
+    <ion-icon name="arrow-back-outline" (click)="back()"></ion-icon>
+  </ion-card-header>
+
   <div *ngIf="show">
     <ion-card class="ion-activatable ripple-parent">
       <ion-card-header>
@@ -27,28 +18,12 @@
   <div *ngIf="!show">
     <div *ngFor="let order of orders">
       <ion-list>
-        <!-- <ion-item
-        (click)="navHistory(order)"
-        class="ion-activatable ripple-parent"
-      >
-        <ion-avatar slot="start">
-          <img src=".\assets\icon\Bloom.png" />
-        </ion-avatar>
-        <ion-label>
-          <h2>{{order.order_flower}}</h2>
-          <h3>{{order.order_totalprice}}</h3>
-          <h3>{{order.order_payment}}</h3>
-          <h3>{{order.order_status}}</h3>
-        </ion-label>
-
-        <ion-ripple-effect></ion-ripple-effect>
-      </ion-item> -->
-
         <ion-card
+          style="background: #44dcb6"
           class="ion-activatable ripple-parent"
           (click)="navHistory(order)"
         >
-          <ion-item>
+          <ion-item style="background: #44dcb6">
             <ion-icon
               name="flower-outline"
               slot="start"
@@ -63,22 +38,51 @@
             </ion-label>
           </ion-item>
           <ion-card-content class="ion-text-left">
-            <ion-label>
-              <p>Mode:</p>
-              <h3>
-                <ion-chip color="primary">
-                  <ion-label>{{order.order_payment}}</ion-label>
-                </ion-chip>
-              </h3>
-            </ion-label>
-            <ion-label>
-              <p>Status:</p>
-              <h3>
-                <ion-chip color="primary">
-                  <ion-label>{{order.order_status}}</ion-label>
-                </ion-chip>
-              </h3>
-            </ion-label>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <ion-label>
+                    <p>Mode:</p>
+                    <h5>
+                      <b class="t1">{{order.order_payment}}</b>
+                    </h5>
+                  </ion-label>
+                </ion-col>
+
+                <ion-col>
+                  <ion-label>
+                    <p>Status:</p>
+                    <h5>
+                      <b class="t1">{{order.order_status}}</b>
+                    </h5>
+                  </ion-label>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <ion-label>
+                    <p>Date and Time:</p>
+                    <h5>
+                      <b class="t1"
+                        >{{order.order_date | date}} at {{order.order_time}}</b
+                      >
+                    </h5>
+                  </ion-label>
+                </ion-col>
+
+                <ion-col>
+                  <ion-label>
+                    <p>For:</p>
+                    <h5>
+                      <b *ngIf="order.order_recipient" class="t1"
+                        >{{order.order_recipient}}</b
+                      >
+                      <b *ngIf="!order.order_recipient" class="t1">Myself</b>
+                    </h5>
+                  </ion-label>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
           </ion-card-content>
         </ion-card>
       </ion-list>

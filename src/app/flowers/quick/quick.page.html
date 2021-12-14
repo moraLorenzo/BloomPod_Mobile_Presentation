@@ -1,16 +1,18 @@
 <div class="center" style="width: 100%">
-  <ion-card class="ion-activatable ripple-parent" style="background: #c5b4e3">
-    <ion-card-header style="background: #c5b4e3">
+  <ion-card class="ion-activatable ripple-parent" style="background: #44dcb6">
+    <ion-card-header>
       <ion-toolbar color="#c5b4e3">
         <ion-buttons slot="start" style="margin-left: 1%">
           <ion-icon
             name="arrow-back-outline"
-            style="color: white"
+            style="color: #08595e"
             (click)="back()"
           ></ion-icon>
         </ion-buttons>
 
-        <ion-title style="color: white"> Please Fill Floral Details </ion-title>
+        <ion-title style="color: #08595e">
+          Please Fill Floral Details
+        </ion-title>
       </ion-toolbar>
     </ion-card-header>
 
@@ -21,7 +23,7 @@
 <ion-content>
   <ion-content>
     <div class="form-group mx-auto mt-5" style="width: 95%">
-      <label for="selectInput">Determine your Budget</label>
+      <label for="selectInput">Price Range</label>
       <select
         id="selectInput"
         class="form-select"
@@ -29,19 +31,24 @@
         aria-label="Default select example"
       >
         <option selected>Filter Prices</option>
-        <option value="1">0-200</option>
-        <option value="2">200-400</option>
-        <option value="3">400-600</option>
-        <option value="4">600-Above</option>
+        <option value="1">0-300</option>
+        <option value="2">300-600</option>
+        <option value="3">600-800</option>
+        <option value="4">800-Above</option>
       </select>
     </div>
 
     <div class="container center mt-5">
-      <h1>Flower Bouquets</h1>
+      <h1 class="strikearound">OR</h1>
+
+      <label class="mt-5">Click Photo for Price</label>
 
       <ion-row>
         <ion-col size="6" *ngFor="let flower of Flowers;let i = index;">
-          <ion-card (click)="confirm(flower)" color="primary">
+          <ion-card
+            (click)="confirm(flower)"
+            style="background-color: #44dcb6; color: #08595e; font-weight: 500"
+          >
             <div class="card">
               <img
                 src="http://bloompod.api.gc-ecommerceapp.com/bloompod_api/quick/{{flower.quick_name}}.jpg"
