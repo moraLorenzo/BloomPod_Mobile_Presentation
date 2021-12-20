@@ -34,7 +34,7 @@
 }
 
 .my-custom-class {
-  --background: #08595e;
+  --background: #00c4cc;
   font-family: "AppFont";
   font-size: 5vw;
   color: white !important;
@@ -49,8 +49,14 @@
   }
 }
 
+.my-custom-class2 {
+  .popover-content {
+    width: 90%;
+  }
+}
+
 .my-custom-class {
-  --background: #08595e;
+  --background: #00c4cc;
   font-family: "AppFont";
   font-size: 5vw;
   color: white !important;
@@ -76,7 +82,8 @@
 
 .my-custom-class-login {
   background-color: #44dcb6;
-  --background: #08595e;
+  --background: #00c4cc;
+
   color: white;
   font-family: "AppFont";
   font-size: 5vw;

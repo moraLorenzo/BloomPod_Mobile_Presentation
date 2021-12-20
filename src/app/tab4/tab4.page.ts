@@ -122,7 +122,7 @@ export class Tab4Page implements OnInit {
           text: 'Yes',
           handler: () => {
             this.userService.setUserLoggedOut();
-            this.router.navigate(['login']);
+            this.router.navigate(['tabs/tab1']);
           },
         },
       ],
@@ -139,12 +139,12 @@ export class Tab4Page implements OnInit {
       .processData(btoa('getOrders').replace('=', ''), { user_id }, 2)
       .subscribe((dt: any) => {
         let load = this.dataService.decrypt(dt.a);
-        console.log(load);
+        // console.log(load);
         try {
           this.orders = load.payload.orders.reverse();
           this.show = false;
         } catch (err) {
-          console.log(err);
+          // console.log(err);
           this.show = true;
         }
         // console.log(load);

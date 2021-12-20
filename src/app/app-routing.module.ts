@@ -7,15 +7,19 @@ const routes: Routes = [
     path: 'tabs',
     loadChildren: () =>
       import('./tabs/tabs.module').then((m) => m.TabsPageModule),
-    canActivate: [AuthGuard],
   },
   {
     path: '',
-    redirectTo: 'login',
-    pathMatch: 'full',
-    // loadChildren: () =>
-    //   import('./login/login.module').then((m) => m.LoginPageModule),
+    loadChildren: () =>
+      import('./tabs/tabs.module').then((m) => m.TabsPageModule),
   },
+  // {
+  //   path: '',
+  //   redirectTo: 'login',
+  //   pathMatch: 'full',
+  //   // loadChildren: () =>
+  //   //   import('./login/login.module').then((m) => m.LoginPageModule),
+  // },
   {
     path: 'login',
     loadChildren: () =>
@@ -27,17 +31,11 @@ const routes: Routes = [
       import('./register/register.module').then((m) => m.RegisterPageModule),
   },
   // {
-  //   path: 'edit',
+  //   path: 'tab4',
   //   loadChildren: () =>
-  //     import('./pages/edit/edit.module').then((m) => m.EditPageModule),
+  //     import('./tab4/tab4.module').then((m) => m.Tab4PageModule),
   //   canActivate: [AuthGuard],
   // },
-  {
-    path: 'tab4',
-    loadChildren: () =>
-      import('./tab4/tab4.module').then((m) => m.Tab4PageModule),
-    canActivate: [AuthGuard],
-  },
   {
     path: 'custom',
     loadChildren: () =>
@@ -129,15 +127,17 @@ const routes: Routes = [
         (m) => m.PaymentConfirmationPageModule
       ),
     canActivate: [AuthGuard],
-  },  {
+  },
+  {
     path: 'terms',
-    loadChildren: () => import('./modal/terms/terms.module').then( m => m.TermsPageModule)
+    loadChildren: () =>
+      import('./modal/terms/terms.module').then((m) => m.TermsPageModule),
   },
   {
     path: 'about',
-    loadChildren: () => import('./modal/about/about.module').then( m => m.AboutPageModule)
+    loadChildren: () =>
+      import('./modal/about/about.module').then((m) => m.AboutPageModule),
   },
-
 ];
 @NgModule({
   imports: [

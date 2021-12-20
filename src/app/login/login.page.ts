@@ -123,11 +123,15 @@ export class LoginPage implements OnInit {
         },
         (er) => {
           loading.dismiss();
-          this.presentToast('Invalid Inputs');
+          this.presentToast('Invalid Login Credentials');
         }
       );
 
     const { role, data } = await loading.onDidDismiss();
+  }
+
+  back() {
+    this._router.navigate(['tabs/tab2']);
   }
 
   public async presentPopover() {

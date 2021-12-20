@@ -46,7 +46,7 @@ ion-card {
 .card1 {
   border-radius: 25px;
 
-  background: linear-gradient(307.03deg, #44dcb6 17.31%, #49d443 70.52%);
+  background: #49d443;
 }
 
 ion-card-subtitle,
@@ -68,12 +68,12 @@ h1 {
   text-align: center;
 }
 
-.t1 {
-  background: -webkit-linear-gradient(
-    307.03deg,
-    #44dcb6 17.31%,
-    #49d443 70.52%
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+// .t1 {
+//   background: -webkit-linear-gradient(
+//     307.03deg,
+//     #44dcb6 17.31%,
+//     #49d443 70.52%
+//   );
+//   -webkit-background-clip: text;
+//   -webkit-text-fill-color: transparent;
+// }

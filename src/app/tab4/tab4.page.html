@@ -1,9 +1,9 @@
 <div class="center">
   <ion-card
     class="ion-activatable ripple-parent"
-    style="background: #44dcb6; color: white"
+    style="background: #00c4cc; color: white"
   >
-    <ion-card-header>
+    <ion-card-header style="background-color: #00c4cc">
       <ion-card-subtitle style="color: #08595e">{{address}}</ion-card-subtitle>
       <ion-card-title style="color: #08595e">{{username}}</ion-card-title>
     </ion-card-header>
@@ -24,7 +24,7 @@
 
   <ion-fab horizontal="end" vertical="top" slot="fixed" edge>
     <ion-fab-button (click)="logout()" color="danger">
-      <ion-icon name="power-outline"></ion-icon>
+      <ion-icon name="power-outline" style="color: white"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 

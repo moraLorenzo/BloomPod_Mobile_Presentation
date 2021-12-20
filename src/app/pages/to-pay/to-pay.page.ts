@@ -70,7 +70,7 @@ export class ToPayPage implements OnInit {
               .processData(btoa('cancel').replace('=', ''), { order_id }, 2)
               .subscribe((dt: any) => {
                 let load = this.dataService.decrypt(dt.a);
-                console.log(load.msg);
+                // console.log(load.msg);
                 this.orders.splice(i, 1);
                 this.presentToast('Order Cancelled');
               });
@@ -118,10 +118,10 @@ export class ToPayPage implements OnInit {
 
     this.res = await this.dataService.updateImage(this.orderPayload);
     if (this.res.message == 'UPLOAD SUCCEED') {
-      console.log(this.res.message);
+      // console.log(this.res.message);
       this.router.navigate(['tabs/tab4']);
     } else {
-      console.log(this.res.message);
+      // console.log(this.res.message);
     }
   }
 
@@ -129,7 +129,7 @@ export class ToPayPage implements OnInit {
     var file = element.files[0];
     var reader = new FileReader();
     reader.onloadend = function () {
-      console.log('RESULT', reader.result);
+      // console.log('RESULT', reader.result);
     };
     reader.readAsDataURL(file);
   }
@@ -147,18 +147,18 @@ export class ToPayPage implements OnInit {
   gettoPay(id) {
     this.orders = [];
     let user_id = id;
-    console.log(user_id);
+    // console.log(user_id);
     this.dataService
       .processData(btoa('gettoPay').replace('=', ''), { user_id }, 2)
       .subscribe((dt: any) => {
         let load = this.dataService.decrypt(dt.a);
-        console.log(load);
+        // console.log(load);
 
         try {
           this.orders = load.payload.orders.reverse();
           this.show = false;
         } catch (err) {
-          console.log(err);
+          // console.log(err);
           this.show = true;
         }
         // console.log(load);

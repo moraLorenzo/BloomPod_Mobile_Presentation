@@ -3,7 +3,10 @@
     <ion-icon name="arrow-back-outline" (click)="back()"></ion-icon>
   </ion-card-header>
 
-  <ion-card class="ion-activatable ripple-parent" style="background: #44dcb6">
+  <ion-card
+    class="ion-activatable ripple-parent ion-card-green"
+    style="background: #62c4ab"
+  >
     <ion-card-header>
       <ion-card-subtitle style="color: white"
         >You can send the payments on any of these Accounts:</ion-card-subtitle
@@ -20,25 +23,20 @@
     </ion-card-content>
   </ion-card>
   <div *ngIf="show">
-    <ion-card class="ion-activatable ripple-parent" style="background: #44dcb6">
+    <ion-card class="ion-activatable ripple-parent">
       <ion-card-header>
         <ion-card-subtitle
-          >No Order that's needed to be paid yet</ion-card-subtitle
+          >There are no orders that need to be paid yet.</ion-card-subtitle
         >
       </ion-card-header>
-
-      <ion-card-content class="t1">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
-      </ion-card-content>
     </ion-card>
   </div>
   <div *ngIf="!show">
     <div *ngFor="let order of orders; index as i">
       <ion-list *ngIf="order.order_status == 'toPay'">
         <ion-card
-          class="ion-activatable ripple-parent"
-          style="background: #44dcb6; color: white"
+          class="ion-activatable ripple-parent ion-card-green"
+          style="background: #62c4ab; color: white"
         >
           <ion-item lines="none">
             <!-- <ion-icon

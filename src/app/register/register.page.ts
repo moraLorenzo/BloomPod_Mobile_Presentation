@@ -2,7 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
-import { LoadingController, ToastController } from '@ionic/angular';
+import {
+  LoadingController,
+  PopoverController,
+  ToastController,
+} from '@ionic/angular';
+import { TermsPage } from '../modal/terms/terms.page';
 import { Doctor } from '../models/doctor';
 import { DataService } from '../services/data/data.service';
 
@@ -31,7 +36,8 @@ export class RegisterPage implements OnInit {
     public dataService: DataService,
     private formBuilder: FormBuilder,
     private _route: Router,
-    public loadingController: LoadingController
+    public loadingController: LoadingController,
+    public popoverController: PopoverController
   ) {}
 
   ngOnInit() {
@@ -234,6 +240,17 @@ export class RegisterPage implements OnInit {
   //   // this.checkBox = !this.checkBox;
   //   // console.log(this.checkBox);
   // }
+
+  public async terms() {
+    const popover = await this.popoverController.create({
+      component: TermsPage,
+      cssClass: 'my-custom-class2',
+      translucent: true,
+    });
+    await popover.present();
+
+    const data = await popover.onWillDismiss();
+  }
 
   onChange() {
     console.log(this.checkBox);

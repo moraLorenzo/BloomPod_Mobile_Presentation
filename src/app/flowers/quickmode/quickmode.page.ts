@@ -250,7 +250,7 @@ export class QuickmodePage implements OnInit {
                     // console.log(dt.a);
                     let load = this.dataService.decrypt(dt.a);
                     loading.dismiss();
-                    this.presentToast(load.status.message);
+                    this.presentToast('Order Placed');
                     this.router.navigate(['tabs/tab1']);
                   },
                   (er) => {
@@ -337,7 +337,7 @@ export class QuickmodePage implements OnInit {
                       // console.log(dt.a);
                       let load = this.dataService.decrypt(dt.a);
                       loading.dismiss();
-                      this.presentToast(load.status.message);
+                      this.presentToast('Order Placed');
                       this.router.navigate(['tabs/tab1']);
                     },
                     (er) => {
@@ -465,7 +465,7 @@ export class QuickmodePage implements OnInit {
                     let load = this.dataService.decrypt(dt.a);
 
                     loading.dismiss();
-                    this.presentToast(load.status.message);
+                    this.presentToast('Order Placed');
                     this.router.navigate(['tabs/tab1']);
                   },
                   (er) => {
@@ -549,7 +549,7 @@ export class QuickmodePage implements OnInit {
                       // console.log(dt.a);
                       let load = this.dataService.decrypt(dt.a);
                       loading.dismiss();
-                      this.presentToast(load.status.message);
+                      this.presentToast('Order Placed');
                       this.router.navigate(['tabs/tab1']);
                     },
                     (er) => {

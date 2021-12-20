@@ -248,10 +248,11 @@ export class ModePage implements OnInit {
                   (dt: any) => {
                     // console.log(dt.a);
                     let load = this.dataService.decrypt(dt.a);
-                    console.log(order_totalprice);
-                    console.log(load.status);
+                    // console.log(order_totalprice);
+                    // console.log(load.status);
                     loading.dismiss();
-                    this.presentToast(load.status.message);
+                    this.presentToast('Order Placed');
+
                     this.router.navigate(['tabs/tab1']);
                   },
                   (er) => {
@@ -344,9 +345,10 @@ export class ModePage implements OnInit {
                     (dt: any) => {
                       // console.log(dt.a);
                       let load = this.dataService.decrypt(dt.a);
-                      console.log(load.status);
+                      // console.log(load.status);
                       loading.dismiss();
-                      this.presentToast(load.status.message);
+                      this.presentToast('Order Placed');
+
                       this.router.navigate(['tabs/tab1']);
                     },
                     (er) => {
@@ -467,9 +469,11 @@ export class ModePage implements OnInit {
                   (dt: any) => {
                     // console.log(dt.a);
                     let load = this.dataService.decrypt(dt.a);
-                    console.log(load.status);
+                    // console.log(load.status);
+
                     loading.dismiss();
-                    this.presentToast(load.status.message);
+                    this.presentToast('Order Placed');
+
                     this.router.navigate(['tabs/tab1']);
                   },
                   (er) => {
@@ -500,7 +504,7 @@ export class ModePage implements OnInit {
                 let order_id = this.order_obj.order_id;
                 let order_payment = this.mode;
                 let address = null;
-                let order_time = e.target[1].value + 'PM';
+                let order_time = this.tConvert(e.target[1].value);
                 let order_date = e.target[0].value;
 
                 let order_address = null;
@@ -546,8 +550,9 @@ export class ModePage implements OnInit {
                       // console.log(dt.a);
                       let load = this.dataService.decrypt(dt.a);
                       loading.dismiss();
-                      console.log(load.status.message);
-                      this.presentToast(load.status.message);
+                      // console.log(load.status.message);
+                      this.presentToast('Order Placed');
+
                       this.router.navigate(['tabs/tab1']);
                     },
                     (er) => {

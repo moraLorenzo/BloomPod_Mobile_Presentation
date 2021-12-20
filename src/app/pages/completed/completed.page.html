@@ -6,29 +6,34 @@
   <div *ngIf="show">
     <ion-card class="ion-activatable ripple-parent">
       <ion-card-header>
-        <ion-card-subtitle>No Completed Orders Yet</ion-card-subtitle>
+        <ion-card-subtitle
+          >There are currently no orders that have been
+          completed.</ion-card-subtitle
+        >
       </ion-card-header>
-
-      <ion-card-content>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
-      </ion-card-content>
     </ion-card>
   </div>
   <div *ngIf="!show">
     <div *ngFor="let order of orders">
       <ion-list>
         <ion-card
-          style="background: #44dcb6"
           class="ion-activatable ripple-parent"
           (click)="navHistory(order)"
         >
-          <ion-item style="background: #44dcb6">
+          <ion-item>
             <ion-icon
               name="flower-outline"
               slot="start"
+              *ngIf="order.order_flower == 'Generated Flower Bouquet'"
               size="large"
             ></ion-icon>
+            <ion-avatar
+              *ngIf="order.order_flower != 'Generated Flower Bouquet'"
+            >
+              <img
+                src="http://bloompod.api.gc-ecommerceapp.com/bloompod_api/quick/{{order.order_flower}}.jpg"
+                alt=""
+            /></ion-avatar>
             <ion-label>
               <ion-card-subtitle>{{order.order_flower}}</ion-card-subtitle>
 

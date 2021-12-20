@@ -78,6 +78,10 @@
   </form>
 </ion-content> -->
 
+<ion-card-header>
+  <ion-icon name="arrow-back-outline" (click)="back()"></ion-icon>
+</ion-card-header>
+
 <div class="container h-100">
   <div class="d-flex justify-content-center h-100">
     <div class="user_card">
@@ -157,7 +161,8 @@
 
       <div class="mt-4">
         <div class="d-flex justify-content-center links">
-          Don't have an account? <a (click)="navReg()" class="ml-2">Sign Up</a>
+          Don't have an account?
+          <a (click)="navReg()" class="ml-2">Create Account</a>
         </div>
       </div>
     </div>

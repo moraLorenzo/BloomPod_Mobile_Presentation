@@ -47,18 +47,18 @@ export class ServicePage implements OnInit {
   getService(id) {
     this.orders = [];
     let user_id = id;
-    console.log(user_id);
+    // console.log(user_id);
     this.dataService
       .processData(btoa('getService').replace('=', ''), { user_id }, 2)
       .subscribe((dt: any) => {
         let load = this.dataService.decrypt(dt.a);
-        console.log(load);
+        // console.log(load);
 
         try {
           this.orders = load.payload.orders.reverse();
           this.show = false;
         } catch (err) {
-          console.log(err);
+          // console.log(err);
           this.show = true;
         }
         // console.log(load);

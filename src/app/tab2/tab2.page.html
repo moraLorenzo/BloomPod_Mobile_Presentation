@@ -1,7 +1,7 @@
 <div class="center">
   <ion-card
     class="ion-activatable ripple-parent"
-    style="background: #44dcb6; color: white"
+    style="background: #00c4cc; color: white"
   >
     <ion-card-header>
       <ion-card-subtitle style="color: #08595e"
@@ -17,84 +17,59 @@
 </div>
 
 <ion-content>
-  <div class="outer">
+  <div class="outer" style="margin-top: 15%">
     <div class="middle">
       <div class="inner">
         <ion-grid>
-          <ion-row style="height: 300px">
+          <ion-row style="height: 200px">
             <ion-card
               color="primary"
               class="card1 ion-activatable ripple-parent"
               (click)="gotoQuick()"
             >
-              <ion-card-header style="margin: auto; text-align: center">
-                <ion-card-subtitle
-                  ><ion-icon size="large" name="flash-outline"></ion-icon
-                ></ion-card-subtitle>
-                <ion-card-title>Florist Choice (Preferred)</ion-card-title>
+              <ion-card-header>
+                <img
+                  src="../../assets/icon/detailsnblooms.png"
+                  style="width: 60%; position: absolute; margin-left: 50%"
+                />
+                <ion-card-subtitle></ion-card-subtitle>
+                <ion-card-title style="margin: auto; text-align: center"
+                  >Florist Choice (Preferred)</ion-card-title
+                >
               </ion-card-header>
 
               <ion-card-content>
                 <span
-                  >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat.</span
+                  >Beautiful Flower Bouquets Designed by the Details & Blooms'
+                  Skilled Florist will Astound and Delight you.</span
                 >
-                <span style="margin-left: 13px">sdsd</span>
               </ion-card-content>
               <ion-ripple-effect></ion-ripple-effect>
             </ion-card>
           </ion-row>
 
           <ion-row style="margin: auto; height: 50px">
-            <!-- <ion-button
-              float="right"
-              style="width: 100%"
-              (click)="gotoCustom()"
-            >
-              <ion-icon style="padding: 2px" name="brush-outline"></ion-icon>
-              Customize
-            </ion-button> -->
-
             <ion-card
               color="primary"
               class="card1 ion-activatable ripple-parent"
               (click)="gotoCustom()"
             >
-              <ion-card-header style="margin: auto; text-align: center">
-                <ion-card-subtitle
-                  ><ion-icon size="large" name="brush-outline"></ion-icon
-                ></ion-card-subtitle>
-                <ion-card-title>Customize</ion-card-title>
+              <ion-card-header>
+                <img
+                  src="../../assets/icon/detailsnblooms.png"
+                  style="width: 60%; position: absolute; margin-left: 50%"
+                />
+                <ion-card-subtitle></ion-card-subtitle>
+                <ion-card-title style="margin: auto; text-align: center"
+                  >Customize</ion-card-title
+                >
               </ion-card-header>
+              <ion-card-content style="text-align: center">
+                <span>Make your Flower Bouquet Unique.</span>
+              </ion-card-content>
 
               <ion-ripple-effect></ion-ripple-effect>
             </ion-card>
-            <!-- <ion-col></ion-col>
-            <ion-col>
-              <ion-button
-                float="right"
-                style="width: 95%"
-                (click)="gotoCustom()"
-              >
-                <ion-icon style="padding: 2px" name="brush-outline"></ion-icon>
-                Customize
-              </ion-button></ion-col> -->
-
-            <!-- <ion-card
-              color="primary"
-              class="card1 ion-activatable ripple-parent"
-              (click)="gotoCustom()"
-            >
-              <ion-card-header style="margin: auto; text-align: center">
-                <ion-card-subtitle
-                  ><ion-icon size="large" name="brush-outline"></ion-icon
-                ></ion-card-subtitle>
-                <ion-card-title>Customize</ion-card-title>
-              </ion-card-header>
-              <ion-ripple-effect></ion-ripple-effect>
-            </ion-card> -->
           </ion-row>
         </ion-grid>
       </div>

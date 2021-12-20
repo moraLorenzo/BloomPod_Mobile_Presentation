@@ -5,6 +5,7 @@ import {
   PopoverController,
   ToastController,
 } from '@ionic/angular';
+import { AboutPage } from '../modal/about/about.page';
 import { Doctor } from '../models/doctor';
 // import { PopoverComponent } from '../pages/edit/popover/popover.component';
 import { DataService } from '../services/data/data.service';
@@ -17,7 +18,7 @@ import { UserService } from '../services/user.service';
 export class Tab1Page implements OnInit {
   greet: string = 'Good Day';
 
-  username: string = 'Sample User';
+  username: string = 'Guest';
   schedules: any;
 
   month: string = 'Sample Month';
@@ -52,6 +53,7 @@ export class Tab1Page implements OnInit {
     else if (hrs >= 17 && hrs <= 24) this.greet = 'Good Evening';
 
     this.month = this.months[new Date().getMonth()];
+    console.log('1');
   }
 
   async ngOnInit() {}
@@ -70,5 +72,16 @@ export class Tab1Page implements OnInit {
     }, 2000);
 
     console.log('Async operation has ended');
+  }
+
+  public async about() {
+    const popover = await this.popoverController.create({
+      component: AboutPage,
+      cssClass: 'my-custom-class2',
+      translucent: true,
+    });
+    await popover.present();
+
+    const data = await popover.onWillDismiss();
   }
 }
